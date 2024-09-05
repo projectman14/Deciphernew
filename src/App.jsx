@@ -18,6 +18,7 @@ import LeaderboardPage from "./pages/LeaderboardPage.jsx";
 import RegisterTeamPage from "./pages/RegisterTeamPage.jsx";
 import DisableBackNavigation from "./DisableBackNavigation.jsx";
 import CVQuestions from "./pages/CVQuestions.jsx";
+import { useEffect } from "react";
 
 // import OptionalQuestion from "./pages/OptionalQuestion";
 
@@ -38,6 +39,22 @@ import CVQuestions from "./pages/CVQuestions.jsx";
 // import "./pages/RulesPage.css";
 
 function App() {
+  useEffect(() => {
+    // Prompt confirmation when reload page is triggered
+    window.onbeforeunload = (event) => {
+      const e = event || window.event;
+      // Cancel the event
+      e.preventDefault();
+      if (e) {
+        e.returnValue = ''; // Legacy method for cross browser support
+      }
+      return ''; // Legacy method for cross browser support
+    };
+        
+    // Unmount the window.onbeforeunload event
+    return () => { window.onbeforeunload = null };
+}, []);
+
   return (
     <>
       {/* <DisableBackNavigation /> */}

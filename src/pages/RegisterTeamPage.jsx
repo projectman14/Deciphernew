@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "../styles/RegisterTeamPage.css"; // Ensure you create this CSS file
 import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 import image from "../../public/registrationform-1.jpg";
+
 const RegisterTeamPage = () => {
   const [teamName, setTeamName] = useState("");
   const [feedback, setFeedback] = useState("");
@@ -24,7 +24,6 @@ const RegisterTeamPage = () => {
       );
       console.log(response.status);
       if (response.status === 201) {
-        // Set localStorage values
         localStorage.setItem("teamName", teamName);
         localStorage.setItem("lastTask", 0);
 
@@ -32,7 +31,6 @@ const RegisterTeamPage = () => {
           "Registration successful! Please wait for further instructions."
         );
         navigate("/decipher-page");
-        // Optionally, redirect or clear form
         setTeamName("");
       } else {
         setFeedback("Registration failed. Please try again.");
@@ -46,19 +44,21 @@ const RegisterTeamPage = () => {
   };
 
   return (
-    <div className="register-team-container">
-      <header className="register-team-header">
-        <h1>Register Your Team</h1>
-        <h2>Join the Decipher Event!</h2>
-        <dir>
-          <img src={image} alt="" />
-        </dir>
+    <div className="max-w-3xl mx-auto p-5 font-sans">
+      <header className="text-center mb-5">
+        <h1 className="text-2xl font-bold underline">Register Your Team</h1>
+        <h2 className="text-xl">Join the Decipher Event!</h2>
+        <div>
+          <img src={image} alt="" className="mx-auto mt-4" />
+        </div>
       </header>
 
-      <section className="register-team-form">
-        <form onSubmit={handleRegister}>
-          <div className="form-group">
-            <label htmlFor="teamName">Team Name:</label>
+      <section className="mt-5">
+        <form onSubmit={handleRegister} className="space-y-4">
+          <div>
+            <label htmlFor="teamName" className="block font-bold mb-1">
+              Team Name:
+            </label>
             <input
               type="text"
               id="teamName"
@@ -67,19 +67,26 @@ const RegisterTeamPage = () => {
               value={teamName}
               onChange={(e) => setTeamName(e.target.value)}
               required
+              className="w-full p-2 border rounded"
             />
           </div>
 
-          <button type="submit" disabled={isSubmitting}>
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className={`bg-blue-500 text-white border-none py-2 px-4 text-base cursor-pointer ${
+              isSubmitting ? "bg-gray-500" : "hover:bg-blue-600"
+            }`}
+          >
             {isSubmitting ? "Registering..." : "Register"}
           </button>
         </form>
 
-        {feedback && <p className="feedback-message">{feedback}</p>}
+        {feedback && <p className="mt-3 text-red-500">{feedback}</p>}
       </section>
 
-      {/* <div className="register-team-footer">
-        <Footer></Footer>
+      {/* <div className="text-center mt-96">
+        <Footer />
       </div> */}
     </div>
   );

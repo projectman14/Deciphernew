@@ -1,46 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios"; // Import axios
-import "./GoogleLensPage.css"; // Ensure you create this CSS file
+import axios from "axios";
 import Footer from "./Footer";
 
-const GoogleLensPage = () => {
+const GoogleStreetViewPage = () => {
   const [userInput, setUserInput] = useState("");
   const [feedback, setFeedback] = useState("");
-  // const [showNextButton, setShowNextButton] = useState(false); // State to manage button visibility
   const [lastTaskState, setLastTaskState] = useState(
     parseInt(localStorage.getItem("lastTask") || "0", 10)
-  ); // Initialize from local storage or default to 0
-  const navigate = useNavigate(); // Hook to handle navigation
+  );
+  const navigate = useNavigate();
 
-  // Correct answer found by analyzing the image with Google Lens
-  const correctAnswer = ["Moraine", "Moraine Lake"]; // Replace with the actual hidden message
+  const correctAnswer = "hollywood";
 
   const checkAnswer = async () => {
-    if (
-      userInput.trim().toLowerCase() === correctAnswer[0].toLowerCase() ||
-      userInput.trim().toLowerCase() === correctAnswer[1].toLowerCase()
-    ) {
-      setFeedback("Correct! ");
-      // setShowNextButton(true); // Show the "Next" button when the answer is correct
+    if (userInput.trim().toLowerCase() === correctAnswer.toLowerCase()) {
+      setFeedback(
+        "Correct! You've found the hidden message on Google Street View. The next clue is unlocked."
+      );
 
       try {
-        // Make the API request to submit the final task
         const response = await axios.post(
           `${import.meta.env.VITE_CORRECT_BACKENDURL}/api/teams/task`,
           {
-            taskNumber: 6, // Assuming the task number is 10
-            team: localStorage.getItem("teamName"), // Get the team name from local storage
+            taskNumber: 7,
+            team: localStorage.getItem("teamName"),
           }
         );
 
-        // Extract currentTask and lastTask from the response data
         const { currentTask, lastTask } = response.data;
-
-        // Update the state and local storage with the new last task
         setLastTaskState(lastTask);
         localStorage.setItem("lastTask", lastTask);
-        navigate("/google-street-view"); // Replace '/completion-page' with the actual path to your final page
+        navigate("/dancing-with-flags");
       } catch (error) {
         setFeedback(
           "There was an error processing your request. Please try again later."
@@ -49,68 +40,70 @@ const GoogleLensPage = () => {
       }
     } else {
       setFeedback("Incorrect. Please try again.");
-      // setShowNextButton(false); // Hide the "Next" button if the answer is incorrect
     }
   };
 
-  // Render content based on the current task state
-  if (lastTaskState >= 5) {
-    // Assuming the user must complete task 9 to access this page
+  if (lastTaskState >= 6) {
     return (
-      <div className="googlelens-container">
-        <header className="googlelens-header">
-          <h1>Google Lens: Uncover the Clue</h1>
-          <h2>
-            Use Google Lens to analyze the image and find the hidden message!
+      <div className="max-w-2xl mx-auto p-6 bg-teal-100 text-center">
+        <header className="bg-teal-700 text-white p-6 rounded-lg mb-6">
+          <h1 className="text-3xl font-bold">Geo Guesser!!</h1>
+          <h2 className="text-xl mt-2">
+            Follow the coordinates, wander around the earth!
           </h2>
         </header>
 
-        <section className="googlelens-intro">
-          <h3>Puzzle #6</h3>
-          <p>
-            The final piece of the puzzle lies hidden in an image. Use Google
-            Lens to uncover the hidden message. This step symbolizes the need
-            for modern tools and techniques to fully understand Satoshi’s
-            legacy.
+        <section className="bg-white p-6 rounded-lg shadow-md mb-6">
+          <h3 className="text-2xl font-semibold mb-4">Puzzle #7</h3>
+          <p className="text-lg text-gray-700">
+            Where neon dreams and glimmers play, find the sign that lights the
+            way. <br /> In the shadow of fame’s bright glare, the truth awaits
+            if you dare to stare.
           </p>
         </section>
 
-        <section className="googlelens-image">
-          {/* Placeholder for the image to be analyzed with Google Lens. Replace src with actual image URL */}
-          <img
-            src="../../moraine.jpeg"
-            alt="Hidden Clue"
-            className="googlelens-puzzle-image"
-          />
+        <section className="bg-white p-6 rounded-lg shadow-md mb-6">
+          <h3 className="text-2xl font-semibold mb-4">Coordinates:</h3>
+          <p className="text-3xl font-bold text-teal-700">4MMH+J9LA</p>
+          {/* Replace with actual coordinates */}
         </section>
 
-        <section className="googlelens-puzzle">
-          <div className="input-section">
-            <label htmlFor="lensInput">Enter the Hidden Message:</label>
+        <section className="bg-white p-6 rounded-lg shadow-md">
+          <div className="mt-6">
+            <label htmlFor="streetviewInput" className="text-lg font-semibold mr-4">
+              Enter the Hidden Message:
+            </label>
             <input
               type="text"
-              id="lensInput"
-              name="lensInput"
+              id="streetviewInput"
+              name="streetviewInput"
               placeholder="Enter the hidden message"
               value={userInput}
               onChange={(e) => setUserInput(e.target.value)}
+              className="px-4 py-2 border border-gray-300 rounded-md mr-4"
             />
-            <button type="button" onClick={checkAnswer}>
+            <button
+              type="button"
+              onClick={checkAnswer}
+              className="px-4 py-2 bg-teal-700 text-white rounded-md hover:bg-teal-800 transition"
+            >
               Submit
             </button>
           </div>
 
-          {feedback && <p className="feedback-message">{feedback}</p>}
+          {feedback && (
+            <p className="text-red-600 font-semibold mt-4">{feedback}</p>
+          )}
         </section>
 
-        <div className="googlelens-footer">
-          <Footer></Footer>
+        <div className="mt-12">
+          <Footer />
         </div>
       </div>
     );
   } else {
-    return <>You have not completed the previous question</>;
+    return <p className="text-center text-lg">You have not completed the previous question</p>;
   }
 };
 
-export default GoogleLensPage;
+export default GoogleStreetViewPage;

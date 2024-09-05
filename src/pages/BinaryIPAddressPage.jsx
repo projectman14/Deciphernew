@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./BinaryIPAddressPage.css"; // Ensure you create this CSS file
-import axios from "axios"; // Import axios
+import axios from "axios";
 import Footer from "./Footer";
 import onof from "/onoff.gif";
 
@@ -10,36 +9,30 @@ const BinaryIPAddressPage = () => {
   const [feedback, setFeedback] = useState("");
   const [lastTaskState, setLastTaskState] = useState(
     parseInt(localStorage.getItem("lastTask") || "0", 10)
-  ); // Initialize from local storage or default to 0
+  );
 
-  const navigate = useNavigate(); // Hook to handle navigation
+  const navigate = useNavigate();
 
-  // The correct answer after decoding the binary IP address
   const correctIPAddress = import.meta.env.VITE_CORRECT_IP_ADDRESS;
-
-  // Replace with your own binary encoded IP address equivalent
 
   const checkIPAddress = async () => {
     if (userInput === correctIPAddress) {
       setFeedback("Correct! You've decoded the IP address.");
 
       try {
-        // Make the API request to submit the task
         const response = await axios.post(
           `${import.meta.env.VITE_CORRECT_BACKENDURL}/api/teams/task`,
           {
-            taskNumber: 3, // Assuming the task number is 5
-            team: localStorage.getItem("teamName"), // Get the team name from local storage
+            taskNumber: 3,
+            team: localStorage.getItem("teamName"),
           }
         );
 
-        // Extract currentTask and lastTask from the response data
         const { currentTask, lastTask } = response.data;
 
-        // Update the state and local storage with the new last task
         setLastTaskState(lastTask);
         localStorage.setItem("lastTask", lastTask);
-        navigate("/caesar-cipher"); // Replace '/next-page' with the actual path to your next page
+        navigate("/caesar-cipher");
       } catch (error) {
         setFeedback(
           "There was an error processing your request. Please try again later."
@@ -51,34 +44,37 @@ const BinaryIPAddressPage = () => {
     }
   };
 
-  // Render content based on the current task state
   if (lastTaskState >= 2) {
-    // Assuming the user must complete task 4 to access this page
     return (
-      <div className="binary-ip-container">
-        <header className="binary-ip-header">
-          <h1>Binary IP Address: Decipher the Digital Clue</h1>
-          <h2>Can you decode the binary IP address?</h2>
+      <div className="max-w-4xl mx-auto p-6 bg-gray-100 text-center">
+        <header className="bg-indigo-800 text-white p-6 rounded-lg mb-6">
+          <h1 className="text-3xl font-bold">Binary IP Address: Decipher the Digital Clue</h1>
+          <h2 className="text-xl mt-2">Can you decode the binary IP address?</h2>
         </header>
 
-        <section className="binary-ip-intro">
+        <section className="bg-white p-6 rounded-lg mb-6 shadow-md">
           <div>
-            <img src={onof} alt="" />
+            <img src={onof} alt="" className="mx-auto" />
           </div>
-          <p>
-            Amidst the endless code of ones and zeroes, truth emerges in the
-            space between. <br />
+          <p className="text-lg mt-4">
+            Amidst the endless code of ones and zeroes, truth emerges in the space between.
+            <br />
             Trust the pattern to unveil what hides in plain sight.
           </p>
         </section>
 
-        <section className="binary-ip-puzzle">
-          <h3>Puzzle #3</h3>
-          <p className="binary-hint">
+        <section className="bg-white p-6 rounded-lg shadow-md">
+          <h3 className="text-2xl font-bold mb-4">Puzzle #3</h3>
+          <p className="text-xl font-semibold text-indigo-800 mb-4">
             <b>DECIPHER</b> THIS : 1111111.0000000.0000000.0000001
           </p>
-          <div className="input-section">
-            <label htmlFor="ipInput">Enter the Decoded IP :</label>
+          <div className="mt-6">
+            <label
+              htmlFor="ipInput"
+              className="text-lg font-semibold mr-4"
+            >
+              Enter the Decoded IP:
+            </label>
             <input
               type="text"
               id="ipInput"
@@ -86,28 +82,29 @@ const BinaryIPAddressPage = () => {
               placeholder="Enter the IP address in standard form"
               value={userInput}
               onChange={(e) => setUserInput(e.target.value)}
+              className="px-4 py-2 border border-gray-300 rounded-md mr-4"
             />
-            <button type="button" onClick={checkIPAddress}>
+            <button
+              type="button"
+              onClick={checkIPAddress}
+              className="px-4 py-2 bg-indigo-800 text-white rounded-md hover:bg-indigo-900 transition"
+            >
               Submit
             </button>
           </div>
 
-          {feedback && <p className="feedback-message">{feedback}</p>}
-          {/* 
-          {showNextButton && (
-            <div className="next-button">
-              <button onClick={handleNextClick}>Next</button>
-            </div>
-          )} */}
+          {feedback && (
+            <p className="text-red-600 font-semibold mt-4">{feedback}</p>
+          )}
         </section>
 
-        <div className="binary-ip-footer">
+        <div className="mt-12">
           <Footer></Footer>
         </div>
       </div>
     );
   } else {
-    return <>You have not completed the previous question</>;
+    return <p>You have not completed the previous question</p>;
   }
 };
 

@@ -17,7 +17,7 @@ import Brainfuck from "./pages/Brainfuck";
 import LeaderboardPage from "./pages/LeaderboardPage.jsx";
 import RegisterTeamPage from "./pages/RegisterTeamPage.jsx";
 import DisableBackNavigation from "./DisableBackNavigation.jsx";
-import CVQuestions from "./pages/Cvquestions.jsx";
+import CVQuestions from "./pages/CVQuestions.jsx";
 
 // import OptionalQuestion from "./pages/OptionalQuestion";
 

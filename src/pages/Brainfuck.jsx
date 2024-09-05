@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./CaesarCipherPage.css";
 import Footer from "./Footer";
 import LnmiitMap from "/lnmiitmap.png";
 
@@ -13,7 +12,7 @@ const Brainfuck = () => {
   );
   const navigate = useNavigate();
 
-  // Initialize allternateQuestion state from localStorage
+  // Initialize alternateQuestion state from localStorage
   const [allternateQuestion, setallternateQuestion] = useState(
     localStorage.getItem("allternateQuestion") || false
   );
@@ -32,8 +31,6 @@ const Brainfuck = () => {
 
   const alternateQuestionHandler = async () => {
     setallternateQuestion(true);
-
-    // setcorrectAnswer("pointer2");
   };
 
   const checkAnswer = async () => {
@@ -65,21 +62,21 @@ const Brainfuck = () => {
   };
 
   const brainfuckCode = `
-+[------->++<]>++.-.------.+++++.++++++.+++[->+++<]>.+++++++++++++.`; // pointer
++[------->++<]>++.-.------.+++++.++++++.+++[->+++<]>.+++++++++++++.`;
 
   if (lastTaskState >= 9) {
     return (
-      <div className="caesar-container">
-        <header className="caesar-header">
-          <h1>Brain Fuck: Uncover the Hidden Message</h1>
-          <h2>Decode the cipher to move to next level</h2>
+      <div className="caesar-container max-w-4xl mx-auto my-12 p-6 bg-yellow-50 text-center rounded-lg shadow-lg">
+        <header className="caesar-header bg-[#a1306e] text-white p-6 rounded-lg mb-6">
+          <h1 className="text-3xl font-bold">Brain Fuck: Uncover the Hidden Message</h1>
+          <h2 className="text-xl mt-2">Decode the cipher to move to next level</h2>
         </header>
 
-        <section className="caesar-intro">
-          <h3>Puzzle #10</h3>
+        <section className="caesar-intro bg-white p-6 rounded-lg mb-6 shadow-sm">
+          <h3 className="text-xl font-semibold mb-4">Puzzle #10</h3>
           {!allternateQuestion ? (
             <div>
-              <p>
+              <p className="text-base text-gray-800">
                 As you delve deeper into the world of cryptography, you
                 encounter a non-classic, not very family-friendly form of
                 encryption. Decode the cipher to reveal the location of the next
@@ -88,18 +85,20 @@ const Brainfuck = () => {
             </div>
           ) : (
             <div>
-              <p>Alternate Question</p>
-              <img src={LnmiitMap} alt="Lnmiit Map" className="lnmiitimg" />
+              <p className="text-base text-gray-800">Alternate Question</p>
+              <img src={LnmiitMap} alt="Lnmiit Map" className="lnmiitimg mx-auto mt-4" />
             </div>
           )}
         </section>
 
-        <section className="caesar-puzzle">
-          <p className="cipher-text">
+        <section className="caesar-puzzle bg-white p-6 rounded-lg shadow-sm">
+          <p className="cipher-text text-lg font-bold text-[#a1306e] mb-4">
             {!allternateQuestion ? brainfuckCode : "String alternatee is lawda"}
           </p>
-          <div className="input-section">
-            <label htmlFor="cipherInput">Enter the Decoded Message:</label>
+          <div className="input-section mt-4">
+            <label htmlFor="cipherInput" className="block text-base mb-2">
+              Enter the Decoded Message:
+            </label>
             <input
               type="text"
               id="cipherInput"
@@ -107,13 +106,18 @@ const Brainfuck = () => {
               placeholder="Enter the decoded location"
               value={userInput}
               onChange={(e) => setUserInput(e.target.value)}
+              className="p-2 text-base border rounded-lg border-gray-300 mb-2"
             />
-            <button className="btn-1" type="button" onClick={checkAnswer}>
+            <button
+              className="btn-1 bg-[#a1306e] text-white py-2 px-4 rounded-lg hover:bg-[#9b0d61]"
+              type="button"
+              onClick={checkAnswer}
+            >
               Submit
             </button>
             {!allternateQuestion && (
               <button
-                className="btn-2"
+                className="btn-2 bg-[#a1306e] text-white py-2 px-4 rounded-lg hover:bg-[#9b0d61] ml-2"
                 type="button"
                 onClick={alternateQuestionHandler}
               >
@@ -122,16 +126,16 @@ const Brainfuck = () => {
             )}
           </div>
 
-          {feedback && <p className="feedback-message">{feedback}</p>}
+          {feedback && <p className="feedback-message text-red-500 text-base mt-4">{feedback}</p>}
         </section>
 
-        <div className="caesar-footer">
+        <div className="caesar-footer bg-[#a1306e] text-white p-4 rounded-lg mt-6">
           <Footer></Footer>
         </div>
       </div>
     );
   } else {
-    return <p>You have not completed the previous question</p>;
+    return <p className="text-center text-lg text-gray-800">You have not completed the previous question</p>;
   }
 };
 

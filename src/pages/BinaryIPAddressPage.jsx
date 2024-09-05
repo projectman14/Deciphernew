@@ -48,8 +48,12 @@ const BinaryIPAddressPage = () => {
     return (
       <div className="max-w-4xl mx-auto p-6 bg-gray-100 text-center">
         <header className="bg-indigo-800 text-white p-6 rounded-lg mb-6">
-          <h1 className="text-3xl font-bold">Binary IP Address: Decipher the Digital Clue</h1>
-          <h2 className="text-xl mt-2">Can you decode the binary IP address?</h2>
+          <h1 className="text-3xl font-bold">
+            Binary IP Address: Decipher the Digital Clue
+          </h1>
+          <h2 className="text-xl mt-2">
+            Can you decode the binary IP address?
+          </h2>
         </header>
 
         <section className="bg-white p-6 rounded-lg mb-6 shadow-md">
@@ -57,7 +61,8 @@ const BinaryIPAddressPage = () => {
             <img src={onof} alt="" className="mx-auto" />
           </div>
           <p className="text-lg mt-4">
-            Amidst the endless code of ones and zeroes, truth emerges in the space between.
+            Amidst the endless code of ones and zeroes, truth emerges in the
+            space between.
             <br />
             Trust the pattern to unveil what hides in plain sight.
           </p>
@@ -66,13 +71,10 @@ const BinaryIPAddressPage = () => {
         <section className="bg-white p-6 rounded-lg shadow-md">
           <h3 className="text-2xl font-bold mb-4">Puzzle #3</h3>
           <p className="text-xl font-semibold text-indigo-800 mb-4">
-            <b>DECIPHER</b> THIS : 1111111.0000000.0000000.0000001
+            <b>DECIPHER</b> THIS : 10101100.00000010.00010110.00000001
           </p>
           <div className="mt-6">
-            <label
-              htmlFor="ipInput"
-              className="text-lg font-semibold mr-4"
-            >
+            <label htmlFor="ipInput" className="text-lg font-semibold mr-4">
               Enter the Decoded IP:
             </label>
             <input

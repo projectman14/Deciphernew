@@ -1,44 +1,35 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios"; // Import axios
-import "./DistortedImagePage.css"; // Ensure you create this CSS file
+import axios from "axios";
 import Footer from "./Footer";
 
 const DistortedImagePage = () => {
   const [userInput, setUserInput] = useState("");
   const [feedback, setFeedback] = useState("");
-  // const [showNextButton, setShowNextButton] = useState(false); // State to manage button visibility
   const [lastTaskState, setLastTaskState] = useState(
     parseInt(localStorage.getItem("lastTask") || "0", 10)
-  ); // Initialize from local storage or default to 0
-  const navigate = useNavigate(); // Hook to handle navigation
+  );
+  const navigate = useNavigate();
 
-  // Correct answer after analyzing or reversing the distortion
-  const correctAnswer = import.meta.env.VITE_CORRECT_ANSWER_DISTORTED; // Replace with the actual decoded message
+  const correctAnswer = import.meta.env.VITE_CORRECT_ANSWER_DISTORTED;
 
   const checkAnswer = async () => {
     if (userInput.trim().toLowerCase() === correctAnswer.toLowerCase()) {
       setFeedback("Correct! You've deciphered the image.");
-      // setShowNextButton(true); // Show the "Next" button when the answer is correct
 
       try {
-        // Make the API request to submit the task
         const response = await axios.post(
           `${import.meta.env.VITE_CORRECT_BACKENDURL}/api/teams/task`,
           {
-            taskNumber: 5, // Assuming the task number is 8
-            team: localStorage.getItem("teamName"), // Get the team name from local storage
+            taskNumber: 5,
+            team: localStorage.getItem("teamName"),
           }
         );
 
-        // Extract currentTask and lastTask from the response data
         const { currentTask, lastTask } = response.data;
-
-        // Update the state and local storage with the new last task
         setLastTaskState(lastTask);
         localStorage.setItem("lastTask", lastTask);
-        navigate("/google-lens"); // Replace '/next-page' with the actual path to your next page
+        navigate("/google-lens");
       } catch (error) {
         setFeedback(
           "There was an error processing your request. Please try again later."
@@ -47,33 +38,31 @@ const DistortedImagePage = () => {
       }
     } else {
       setFeedback("Incorrect. Please try again.");
-      // setShowNextButton(false); // Hide the "Next" button if the answer is incorrect
     }
   };
 
-  // Render content based on the current task state
   if (lastTaskState >= 4) {
-    // Assuming the user must complete task 7 to access this page
     return (
-      <div className="distorted-container">
-        <header className="distorted-header">
-          <h1>Distorted Image: Reveal the Hidden Clue</h1>
-          <h2>Awareness is Light, Unawareness is Darkness!</h2>
+      <div className="max-w-2xl mx-auto p-6 bg-cyan-100 text-center">
+        <header className="bg-teal-700 text-white p-6 rounded-lg mb-6">
+          <h1 className="text-3xl font-bold">Distorted Image: Reveal the Hidden Clue</h1>
+          <h2 className="text-xl mt-2">Awareness is Light, Unawareness is Darkness!</h2>
         </header>
-        <h3>Puzzle #5</h3>
-        <section className="distorted-image">
+        <h3 className="text-2xl font-semibold mb-6">Puzzle #5</h3>
+        <section className="bg-white p-6 rounded-lg shadow-md mb-6 flex justify-center items-center">
           {/* Placeholder for the distorted image. Replace src with actual image URL */}
           <img
             src="../../innovatenew.png"
             alt="Distorted Clue"
-            className="distorted-puzzle-image"
-            style={{ transform: "scaleX(-1)" }}
+            className="w-full max-w-lg rounded-lg shadow-lg transform scale-x-[-1]"
           />
         </section>
 
-        <section className="distorted-puzzle">
-          <div className="input-section">
-            <label htmlFor="imageInput">Enter the Decoded Message:</label>
+        <section className="bg-white p-6 rounded-lg shadow-md">
+          <div className="mt-6">
+            <label htmlFor="imageInput" className="text-lg font-semibold mr-4">
+              Enter the Decoded Message:
+            </label>
             <input
               type="text"
               id="imageInput"
@@ -81,22 +70,29 @@ const DistortedImagePage = () => {
               placeholder="Enter the decoded message"
               value={userInput}
               onChange={(e) => setUserInput(e.target.value)}
+              className="px-4 py-2 border border-gray-300 rounded-md mr-4"
             />
-            <button type="button" onClick={checkAnswer}>
+            <button
+              type="button"
+              onClick={checkAnswer}
+              className="px-4 py-2 bg-teal-700 text-white rounded-md hover:bg-teal-800 transition"
+            >
               Submit
             </button>
           </div>
 
-          {feedback && <p className="feedback-message">{feedback}</p>}
+          {feedback && (
+            <p className="text-red-600 font-semibold mt-4">{feedback}</p>
+          )}
         </section>
 
-        <div className="distorted-footer">
-          <Footer></Footer>
+        <div className="mt-12">
+          <Footer />
         </div>
       </div>
     );
   } else {
-    return <>You have not completed the previous question</>;
+    return <p className="text-center text-lg">You have not completed the previous question</p>;
   }
 };
 

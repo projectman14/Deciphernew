@@ -77,7 +77,7 @@ const Brainfuck = () => {
         </header>
 
         <section className="caesar-intro bg-white p-6 rounded-lg mb-6 shadow-sm">
-          <h3 className="text-xl font-semibold mb-4">Puzzle #10</h3>
+          <h3 className="text-xl font-semibold mb-4">Puzzle #11</h3>
           {!allternateQuestion ? (
             <div>
               <p className="text-base text-gray-800">

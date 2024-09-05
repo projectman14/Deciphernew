@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-
 import { useNavigate } from "react-router-dom";
 import axios from "axios"; // Import axios for making HTTP requests
-import "./DecipherPage.css"; // Make sure to create this CSS file
 import Footer from "./Footer";
 import image from "/timecapsule.gif";
 import image2 from "/satoshi.jpg";
@@ -18,24 +16,13 @@ export const DecipherPage = () => {
 
   const correctAnswer = import.meta.env.VITE_CORRECT_ANSWER_DECIPHER;
 
-  // useEffect(() => {
-  //   // Check if the user has completed the necessary tasks to access this page
-  //   if (lastTaskState < 1) {
-  //     setFeedback(
-  //       "You have not completed the required tasks to access this page."
-  //     );
-  //   }
-  // }, [lastTaskState]);
-
   const checkCode = async () => {
     if (userInput.toLowerCase() === correctAnswer.toLowerCase()) {
       setFeedback("Correct! You've unlocked the next clue.");
-      // You can add code here to navigate to the next page or reveal more content
 
       try {
         setIsLoading(true); // Start loading
 
-        // Make the API request to submit the task progress
         const response = await axios.post(
           `${import.meta.env.VITE_CORRECT_BACKENDURL}/api/teams/task`,
           {
@@ -44,17 +31,12 @@ export const DecipherPage = () => {
           }
         );
 
-        // Extract currentTask and lastTask from the response data
         const { currentTask, lastTask } = response.data;
-
-        // Update the state and local storage with the new last task
         setLastTaskState(lastTask);
         localStorage.setItem("lastTask", lastTask);
 
-        // Navigate to the next page or handle success as needed
         navigate("/location-hunt");
       } catch (error) {
-        // Handle error response from backend
         if (
           error.response &&
           error.response.data &&
@@ -75,52 +57,54 @@ export const DecipherPage = () => {
     }
   };
 
-  // Conditional rendering based on lastTaskState
-
-  // Render the Decipher Page content if the user has completed all required tasks
   return (
-    <div className="decipher-container">
-      <header className="decipher-header">
-        <h1>Decipher: The First Clue</h1>
-        <h2>Unlock the Past, Secure the Future</h2>
+    <div className="container mx-auto p-6 bg-gray-100 text-center max-w-4xl">
+      <header className="bg-gray-800 text-white p-5 rounded-lg mb-6">
+        <h1 className="text-3xl font-bold">Decipher: The First Clue</h1>
+        <h2 className="text-xl mt-2">Unlock the Past, Secure the Future</h2>
       </header>
 
-      <div className="decipher-intro">
+      <div className="bg-white p-5 rounded-lg mb-6 shadow-lg flex">
         <div>
-          <img className="image2a" src={image2} alt="" />
+          <img className="rounded-lg shadow-md max-w-xs" src={image2} alt="" />
         </div>
-
-        <p className="paragraph">
-          <h3>#Fact</h3>
-          <i>
-            <p>
+        <div className="ml-8 text-left">
+          <h3 className="text-lg font-semibold">#Fact</h3>
+          <p className="text-gray-700 mt-3">
+            <i>
               Satoshi Nakamoto laid the foundation of Blockchain using the
               already existing techniques such as Distributed Systems,
-              Cryptography, etc.
-            </p>
-            <p>
-              Bitcoin (BTC, native Cryptocurrency) is the north star of the
-              Chain.
-            </p>
-          </i>
-        </p>
+              Cryptography, etc. Bitcoin (BTC, native Cryptocurrency) is the
+              north star of the Chain.
+            </i>
+          </p>
+        </div>
       </div>
 
-      <section className="decipher-puzzle">
-        <h1>Puzzle #1</h1>
-        <img src={image} alt="Time Capsule" className="time-capsule-image" />
-        <p className="puzzle-text">
-          <b> TODO:</b> Shift each glyph to where shadows linger, thrice removed
+      <section className="bg-white p-5 rounded-lg shadow-lg">
+        <h1 className="text-2xl font-bold mb-5">Puzzle #1</h1>
+        <img
+          src={image}
+          alt="Time Capsule"
+          className="w-full max-w-lg mx-auto rounded-lg shadow-md mb-5"
+        />
+        <p className="text-lg text-gray-800 mb-5">
+          <b>TODO:</b> Shift each glyph to where shadows linger, thrice removed
           from the light, and the secret will reveal itself.
           <br />
           <b>Hint:</b> “History Always Wins, <b>Reading</b> Power is your best
           friend!”
           <br />
           <br />
-          The phrase is: <b>ZKLWHSDSHU </b>
+          The phrase is: <b>ZKLWHSDSHU</b>
         </p>
-        <div className="puzzle-input">
-          <label htmlFor="code">Enter the Code:</label>
+        <div className="mt-5">
+          <label
+            htmlFor="code"
+            className="block text-gray-700 text-lg font-medium mb-2"
+          >
+            Enter the Code:
+          </label>
           <input
             type="text"
             id="code"
@@ -128,16 +112,24 @@ export const DecipherPage = () => {
             placeholder="Enter the deciphered code here"
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
+            className="px-4 py-2 border border-gray-300 rounded-lg mr-4"
           />
-          <button type="button" onClick={checkCode} disabled={isLoading}>
+          <button
+            type="button"
+            onClick={checkCode}
+            disabled={isLoading}
+            className="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors"
+          >
             {isLoading ? "Submitting..." : "Submit"}
           </button>
         </div>
-        {feedback && <p className="feedback-message">{feedback}</p>}
+        {feedback && (
+          <p className="mt-5 text-red-600 font-medium">{feedback}</p>
+        )}
       </section>
 
-      <div className="decipher-footer">
-        <Footer></Footer>
+      <div className="bg-gray-800 text-white p-4 rounded-lg mt-6">
+        <Footer />
       </div>
     </div>
   );

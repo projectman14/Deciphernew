@@ -24,7 +24,7 @@ const Brainfuck = () => {
     // Save allternateQuestion state to localStorage whenever it changes
     localStorage.setItem("allternateQuestion", allternateQuestion);
     if (allternateQuestion) {
-      setcorrectAnswer("man_in_the_middle");
+      setcorrectAnswer("man in the middle");
     } else {
       setcorrectAnswer("pointer");
     }

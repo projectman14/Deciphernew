@@ -7,7 +7,10 @@ const LeaderboardPage = () => {
   useEffect(() => {
     const fetchTeams = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_CORRECT_BACKENDURL}/api/teams`); // Adjust the URL as needed
+        const response = await axios.get(
+          "https://decipher-fw2x.vercel.app/api/teams"
+        ); // Adjust the URL as needed
+        console.log(response);
         setTeams(response.data);
       } catch (error) {
         console.error("Error fetching teams:", error);
@@ -36,9 +39,16 @@ const LeaderboardPage = () => {
                 index % 2 === 0 ? "bg-gray-100" : "bg-gray-50"
               } hover:bg-gray-200 cursor-pointer`}
             >
-              <td className="py-3 px-4 border-b border-gray-200">{index + 1}</td>
-              <td className="py-3 px-4 border-b border-gray-200">{team.team}</td>
-              <td className="py-3 px-4 border-b border-gray-200">{team.currentTask}</td> {/* Display score as currentTask */}
+              <td className="py-3 px-4 border-b border-gray-200">
+                {index + 1}
+              </td>
+              <td className="py-3 px-4 border-b border-gray-200">
+                {team.team}
+              </td>
+              <td className="py-3 px-4 border-b border-gray-200">
+                {team.currentTask}
+              </td>{" "}
+              {/* Display score as currentTask */}
             </tr>
           ))}
         </tbody>

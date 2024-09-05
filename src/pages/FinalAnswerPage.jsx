@@ -77,11 +77,13 @@ const FinalAnswerPage = () => {
     <div className="max-w-2xl mx-auto p-6 bg-green-50 text-center">
       <header className="bg-teal-900 text-white p-6 rounded-lg mb-6">
         <h1 className="text-3xl font-bold">The Final Answer Revealed</h1>
-        <h2 className="text-xl mt-2">The answer was hidden in plain sight all along!</h2>
+        <h2 className="text-xl mt-2">
+          The answer was hidden in plain sight all along!
+        </h2>
       </header>
 
       <section className="bg-white p-6 rounded-lg shadow-md mb-6">
-        <h3 className="text-2xl font-semibold mb-4">Puzzle #11</h3>
+        <h3 className="text-2xl font-semibold mb-4">Puzzle #12</h3>
         <p className="text-base text-gray-800 mb-4">
           The final revelation is that the answer was the event name all along!
           But what is the question you may ask? Maybe you'll find what you seek

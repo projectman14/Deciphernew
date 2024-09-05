@@ -51,10 +51,11 @@ const CVQuestions = () => {
 
         <section className="bg-white p-5 rounded-lg mb-5 shadow-md">
           <div className="object-contain">
-            <h3>Puzzle #10</h3>
+            <h3>Puzzle #11</h3>
           </div>
           <p className="text-lg text-gray-700">
-            "All versions of package dojo are vulnerable to prototype pollution via setObject function"
+            "All versions of package dojo are vulnerable to prototype pollution
+            via setObject function"
           </p>
         </section>
 
@@ -64,7 +65,9 @@ const CVQuestions = () => {
               Download PDF
             </a>
           </div>
-          <p className="text-pink-700 font-bold text-lg mb-5">Downloading the pdf might help</p>
+          <p className="text-pink-700 font-bold text-lg mb-5">
+            Downloading the pdf might help
+          </p>
           <div className="mt-5">
             <label htmlFor="cipherInput" className="text-lg mr-2">
               Enter the name:
@@ -87,9 +90,7 @@ const CVQuestions = () => {
             </button>
           </div>
 
-          {feedback && (
-            <p className="text-lg text-red-600 mt-4">{feedback}</p>
-          )}
+          {feedback && <p className="text-lg text-red-600 mt-4">{feedback}</p>}
         </section>
 
         <div className="bg-pink-700 text-white p-4 rounded-lg mt-36">

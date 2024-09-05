@@ -23,7 +23,7 @@ const GoogleStreetViewPage = () => {
         const response = await axios.post(
           `${import.meta.env.VITE_CORRECT_BACKENDURL}/api/teams/task`,
           {
-            taskNumber: 7,
+            taskNumber: 6,
             team: localStorage.getItem("teamName"),
           }
         );

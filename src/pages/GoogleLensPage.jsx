@@ -43,7 +43,7 @@ const GoogleStreetViewPage = () => {
     }
   };
 
-  if (lastTaskState >= 6) {
+  if (lastTaskState >= 5) {
     return (
       <div className="max-w-2xl mx-auto p-6 bg-teal-100 text-center">
         <header className="bg-teal-700 text-white p-6 rounded-lg mb-6">

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Footer from "./Footer";
 import LnmiitMap from "/lnmiitmap.png";
+import LnmiitMap2 from "/lnmiit_map.jpeg";
 
 const Brainfuck = () => {
   const [userInput, setUserInput] = useState("");
@@ -92,6 +93,12 @@ const Brainfuck = () => {
               <p className="text-base text-gray-800">Alternate Question</p>
               <img
                 src={LnmiitMap}
+                alt="Lnmiit Map"
+                className="lnmiitimg mx-auto mt-4"
+              />
+              <h3 className="text-xl font-semibold mb-4">OR</h3>
+              <img
+                src={LnmiitMap2}
                 alt="Lnmiit Map"
                 className="lnmiitimg mx-auto mt-4"
               />

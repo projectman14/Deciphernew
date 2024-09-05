@@ -35,7 +35,7 @@ const MorseCodeVideoPage = () => {
         localStorage.setItem("lastTask", lastTask);
 
         // Navigate to the next page after successfully submitting the task
-        navigate("/brain-fuck");
+        navigate("/cv-question");
       } catch (error) {
         setFeedback(
           "There was an error submitting the task. Please try again later."

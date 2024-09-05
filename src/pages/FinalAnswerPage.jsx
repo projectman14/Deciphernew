@@ -15,7 +15,7 @@ const FinalAnswerPage = () => {
 
   useEffect(() => {
     // Check if the user has completed all tasks (up to the required last task)
-    if (lastTaskState < 10) {
+    if (lastTaskState < 11) {
       setFeedback(
         "You have not completed all required tasks to access the final answer page."
       );
@@ -33,7 +33,7 @@ const FinalAnswerPage = () => {
         const response = await axios.post(
           `${import.meta.env.VITE_CORRECT_BACKENDURL}/api/teams/task`,
           {
-            taskNumber: 11, // Assuming the task number is 11
+            taskNumber: 12, // Assuming the task number is 11
             team: localStorage.getItem("teamName"), // Get the team name from local storage
           }
         );
@@ -58,7 +58,7 @@ const FinalAnswerPage = () => {
   };
 
   // Conditional rendering based on lastTaskState
-  if (lastTaskState < 10) {
+  if (lastTaskState < 11) {
     // If the user has not completed the required tasks, show a message
     return (
       <div className="max-w-2xl mx-auto p-6 bg-green-50 text-center">

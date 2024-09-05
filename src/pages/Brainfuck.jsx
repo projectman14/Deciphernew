@@ -23,7 +23,7 @@ const Brainfuck = () => {
     // Save allternateQuestion state to localStorage whenever it changes
     localStorage.setItem("allternateQuestion", allternateQuestion);
     if (allternateQuestion) {
-      setcorrectAnswer("pointer2");
+      setcorrectAnswer("man_in_the_middle");
     } else {
       setcorrectAnswer("pointer");
     }
@@ -40,7 +40,7 @@ const Brainfuck = () => {
         const response = await axios.post(
           `${import.meta.env.VITE_CORRECT_BACKENDURL}/api/teams/task`,
           {
-            taskNumber: 10, // Assuming the task number is 10
+            taskNumber: 11, // Assuming the task number is 10
             team: localStorage.getItem("teamName"),
           }
         );
@@ -64,7 +64,7 @@ const Brainfuck = () => {
   const brainfuckCode = `
 +[------->++<]>++.-.------.+++++.++++++.+++[->+++<]>.+++++++++++++.`;
 
-  if (lastTaskState >= 9) {
+  if (lastTaskState >= 10) {
     return (
       <div className="caesar-container max-w-4xl mx-auto my-12 p-6 bg-yellow-50 text-center rounded-lg shadow-lg">
         <header className="caesar-header bg-[#a1306e] text-white p-6 rounded-lg mb-6">
@@ -93,7 +93,7 @@ const Brainfuck = () => {
 
         <section className="caesar-puzzle bg-white p-6 rounded-lg shadow-sm">
           <p className="cipher-text text-lg font-bold text-[#a1306e] mb-4">
-            {!allternateQuestion ? brainfuckCode : "String alternatee is lawda"}
+            {!allternateQuestion ? brainfuckCode : "Answer of previous question is Decipher"}
           </p>
           <div className="input-section mt-4">
             <label htmlFor="cipherInput" className="block text-base mb-2">

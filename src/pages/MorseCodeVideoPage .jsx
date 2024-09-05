@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./MorseCodeVideoPage.css"; // Ensure you create this CSS file
 import { useNavigate } from "react-router-dom";
 import axios from "axios"; // Import axios
 import Footer from "./Footer";
@@ -9,7 +8,7 @@ const MorseCodeVideoPage = () => {
   const [feedback, setFeedback] = useState("");
   const [lastTaskState, setLastTaskState] = useState(
     parseInt(localStorage.getItem("lastTask") || "0", 10)
-  ); // Initialize from local storage or default to 0
+  );
   const navigate = useNavigate();
 
   const correctMessage = "kernel"; // Replace with the actual Morse code message decoded
@@ -18,14 +17,12 @@ const MorseCodeVideoPage = () => {
     if (decodedMessage.toLowerCase() === correctMessage) {
       setFeedback("Correct! You've deciphered the hidden Morse code message.");
 
-      // You can add code here to navigate to the next page or reveal more content
-
       try {
         // Make the API request to submit the task
         const response = await axios.post(
           `${import.meta.env.VITE_CORRECT_BACKENDURL}/api/teams/task`,
           {
-            taskNumber: 9, // Assuming the task number is 3
+            taskNumber: 9, // Assuming the task number is 9
             team: localStorage.getItem("teamName"), // Get the team name from local storage
           }
         );
@@ -52,23 +49,23 @@ const MorseCodeVideoPage = () => {
     }
   };
 
-  // Render content based on the current task state
   if (lastTaskState >= 8) {
     return (
-      <div className="morse-code-container">
-        <header className="morse-code-header">
-          <h1>Morse Code Video: Hidden in Plain Sight</h1>
-          <h2>Can you decode the message?</h2>
+      <div className="max-w-2xl mx-auto p-6 bg-gray-100 text-center">
+        <header className="bg-gray-800 text-white p-6 rounded-lg mb-6">
+          <h1 className="text-3xl font-bold">Morse Code Video: Hidden in Plain Sight</h1>
+          <h2 className="text-xl mt-2">Can you decode the message?</h2>
         </header>
 
-        <section className="morse-code-intro">
-          <h3>Puzzle #9</h3>
-          <p>
+        <section className="bg-white p-6 rounded-lg shadow-md mb-6">
+          <h3 className="text-2xl font-semibold mb-4">Puzzle #9</h3>
+          <p className="text-lg text-gray-700">
             In the silent ballet of coded light, observe the pattern within the
             night. <br /> With careful gaze and patient ear, the message hidden
             will soon appear.
             <br />
             <a
+              className="text-blue-500 hover:underline"
               target="_blank"
               rel="noopener noreferrer"
               href="https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.wikihow.com%2Fimages%2Fthumb%2F1%2F17%2FLearn-Morse-Code-Step-2-Version-4.jpg%2Fv4-460px-Learn-Morse-Code-Step-2-Version-4.jpg.webp&tbnid=-6iMM1I3FvoyVM&vet=1&imgrefurl=https%3A%2F%2Fwww.wikihow.com%2FLearn-Morse-Code&docid=gBbtRGbI5Y7vFM&w=460&h=345&hl=en-US&source=sh%2Fx%2Fim%2Fm1%2F4&kgs=e93059792281d28f&shem=abme%2Ctrie"
@@ -78,13 +75,9 @@ const MorseCodeVideoPage = () => {
           </p>
         </section>
 
-        <section className="morse-code-puzzle">
-          {/* Replace 'video.mp4' with the actual video file path */}
+        <section className="bg-white p-6 rounded-lg shadow-md mb-6">
           <iframe
-            width="50%"
-            height="50%"
-            // width="560"
-            // height="315"
+            className="w-full max-w-lg rounded-lg shadow-md"
             src="https://www.youtube.com/embed/WTx_L2r4JlA?si=VmMAAaomQ-2N1i6r"
             title="YouTube video player"
             frameBorder="0"
@@ -92,13 +85,15 @@ const MorseCodeVideoPage = () => {
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
           ></iframe>
-          <p className="puzzle-hint">
+          <p className="text-lg font-bold text-gray-800 mt-4 mb-6">
             "Watch closely. The message is in the blinks. Decode the Morse code
             to find the hidden message."
           </p>
 
-          <div className="message-input">
-            <label htmlFor="message">Enter the Decoded Message:</label>
+          <div className="mt-6">
+            <label htmlFor="message" className="text-lg font-semibold mr-4">
+              Enter the Decoded Message:
+            </label>
             <input
               type="text"
               id="message"
@@ -106,22 +101,29 @@ const MorseCodeVideoPage = () => {
               placeholder="Enter the decoded message here"
               value={decodedMessage}
               onChange={(e) => setDecodedMessage(e.target.value)}
+              className="px-4 py-2 border border-gray-300 rounded-md mr-4"
             />
-            <button type="button" onClick={checkMessage}>
+            <button
+              type="button"
+              onClick={checkMessage}
+              className="px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-gray-900 transition"
+            >
               Submit
             </button>
           </div>
 
-          {feedback && <p className="feedback-message">{feedback}</p>}
+          {feedback && (
+            <p className="text-red-600 font-semibold mt-4">{feedback}</p>
+          )}
         </section>
 
-        <div className="morse-code-footer">
-          <Footer></Footer>
+        <div className="mt-8">
+          <Footer />
         </div>
       </div>
     );
   } else {
-    return <>You have not completed the previous question</>;
+    return <p className="text-center text-lg">You have not completed the previous question.</p>;
   }
 };
 

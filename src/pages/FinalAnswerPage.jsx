@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios"; // Import axios for making HTTP requests
-import "./FinalAnswerPage.css"; // Ensure you create this CSS file
 import Footer from "./Footer";
 
 const FinalAnswerPage = () => {
@@ -34,7 +33,7 @@ const FinalAnswerPage = () => {
         const response = await axios.post(
           `${import.meta.env.VITE_CORRECT_BACKENDURL}/api/teams/task`,
           {
-            taskNumber: 11, // Assuming the task number is 10
+            taskNumber: 11, // Assuming the task number is 11
             team: localStorage.getItem("teamName"), // Get the team name from local storage
           }
         );
@@ -62,41 +61,48 @@ const FinalAnswerPage = () => {
   if (lastTaskState < 10) {
     // If the user has not completed the required tasks, show a message
     return (
-      <div className="finalanswer-container">
-        <header className="finalanswer-header">
-          <h1>Access Denied</h1>
+      <div className="max-w-2xl mx-auto p-6 bg-green-50 text-center">
+        <header className="bg-teal-900 text-white p-6 rounded-lg mb-6">
+          <h1 className="text-3xl font-bold">Access Denied</h1>
         </header>
-        <section className="finalanswer-intro">
-          <p>{feedback}</p>
+        <section className="bg-white p-6 rounded-lg shadow-md mb-6">
+          <p className="text-base text-gray-800">{feedback}</p>
         </section>
       </div>
     );
   }
 
   // Render the Final Answer Page content if the user has completed all required tasks
-
   return (
-    <div className="finalanswer-container">
-      <header className="finalanswer-header">
-        <h1>The Final Answer Revealed</h1>
-        <h2>The answer was hidden in plain sight all along!</h2>
+    <div className="max-w-2xl mx-auto p-6 bg-green-50 text-center">
+      <header className="bg-teal-900 text-white p-6 rounded-lg mb-6">
+        <h1 className="text-3xl font-bold">The Final Answer Revealed</h1>
+        <h2 className="text-xl mt-2">The answer was hidden in plain sight all along!</h2>
       </header>
 
-      <section className="finalanswer-intro">
-        <h3>Puzzle #11</h3>
-        <p>
+      <section className="bg-white p-6 rounded-lg shadow-md mb-6">
+        <h3 className="text-2xl font-semibold mb-4">Puzzle #11</h3>
+        <p className="text-base text-gray-800 mb-4">
           The final revelation is that the answer was the event name all along!
           But what is the question you may ask? Maybe you'll find what you seek
           here:
         </p>
-        <p>
-          https://drive.google.com/file/d/12eAz0ru4rSH-sQ4TB825goD6QZR_8_vf/view?usp=drive_link
-        </p>
+        <a
+          href="https://drive.google.com/file/d/12eAz0ru4rSH-sQ4TB825goD6QZR_8_vf/view?usp=drive_link"
+          className="text-blue-500 underline"
+        >
+          Google Drive Link
+        </a>
       </section>
 
-      <section className="finalanswer-input">
-        <div className="input-section">
-          <label htmlFor="finalAnswerInput">Enter the Final Answer:</label>
+      <section className="bg-white p-6 rounded-lg shadow-md mb-6">
+        <div className="mt-6">
+          <label
+            htmlFor="finalAnswerInput"
+            className="block text-lg font-semibold mb-2"
+          >
+            Enter the Final Answer:
+          </label>
           <input
             type="text"
             id="finalAnswerInput"
@@ -104,17 +110,25 @@ const FinalAnswerPage = () => {
             placeholder="Enter the final answer"
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
+            className="px-4 py-2 border border-gray-300 rounded-md mb-4"
           />
-          <button type="button" onClick={checkAnswer} disabled={isLoading}>
+          <button
+            type="button"
+            onClick={checkAnswer}
+            disabled={isLoading}
+            className="px-4 py-2 bg-teal-900 text-white rounded-md hover:bg-teal-800 transition"
+          >
             {isLoading ? "Submitting..." : "Submit"}
           </button>
         </div>
 
-        {feedback && <p className="feedback-message">{feedback}</p>}
+        {feedback && (
+          <p className="text-red-600 font-semibold mt-4">{feedback}</p>
+        )}
       </section>
 
-      <div className="finalanswer-footer">
-        <Footer></Footer>
+      <div className="mt-6">
+        <Footer />
       </div>
     </div>
   );

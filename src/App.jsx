@@ -64,7 +64,7 @@ function App() {
           {/* <Route path="/optional-question" element={<OptionalQuestion />} /> */}
           <Route path="/final-answer" element={<FinalAnswerPage />} />
           <Route path="/rules" element={<RulesPage />} />
-          <Route path="/leaderboard" element={<LeaderboardPage />} />
+          <Route path="/team/leaderboard" element={<LeaderboardPage />} />
           <Route path="/cv-question" element={(<CVQuestions/>)} />
           <Route path="/" element={<RegisterTeamPage />} />
         </Routes>

@@ -32,7 +32,7 @@ const DancingWithFlagsPage = () => {
         const { currentTask, lastTask } = response.data;
         setLastTaskState(lastTask);
         localStorage.setItem("lastTask", lastTask);
-        navigate("/morse-code-video"); // Replace with actual path
+        navigate("/vX7rT1wLqJbN"); // Replace with actual path
       } catch (error) {
         setFeedback(
           "There was an error processing your request. Please try again later."
@@ -49,7 +49,9 @@ const DancingWithFlagsPage = () => {
       <div className="max-w-xl mx-auto p-6 bg-gray-50 text-center">
         <header className="bg-teal-700 text-white p-6 rounded-lg mb-6">
           <h1 className="text-3xl font-bold">Dancing with Flags</h1>
-          <h2 className="text-xl mt-2">Watch carefully and uncover the hidden message!</h2>
+          <h2 className="text-xl mt-2">
+            Watch carefully and uncover the hidden message!
+          </h2>
         </header>
 
         <section className="bg-white p-6 rounded-lg shadow-md mb-6">
@@ -63,7 +65,11 @@ const DancingWithFlagsPage = () => {
 
         <section className="bg-white p-6 rounded-lg shadow-md mb-6 flex justify-center items-center">
           {/* Placeholder for the video. Replace src with actual video URL */}
-          <img src="../../genesis.jpeg" alt="Video Placeholder" className="max-w-full h-auto" />
+          <img
+            src="../../genesis.jpeg"
+            alt="Video Placeholder"
+            className="max-w-full h-auto"
+          />
         </section>
 
         <section className="bg-white p-6 rounded-lg shadow-md">
@@ -100,7 +106,11 @@ const DancingWithFlagsPage = () => {
       </div>
     );
   } else {
-    return <p className="text-center text-lg">You have not completed the previous question.</p>;
+    return (
+      <p className="text-center text-lg">
+        You have not completed the previous question.
+      </p>
+    );
   }
 };
 

@@ -29,7 +29,7 @@ const DistortedImagePage = () => {
         const { currentTask, lastTask } = response.data;
         setLastTaskState(lastTask);
         localStorage.setItem("lastTask", lastTask);
-        navigate("/google-lens");
+        navigate("/qR2jF4yLpNzX");
       } catch (error) {
         setFeedback(
           "There was an error processing your request. Please try again later."
@@ -45,8 +45,12 @@ const DistortedImagePage = () => {
     return (
       <div className="max-w-2xl mx-auto p-6 bg-cyan-100 text-center">
         <header className="bg-teal-700 text-white p-6 rounded-lg mb-6">
-          <h1 className="text-3xl font-bold">Distorted Image: Reveal the Hidden Clue</h1>
-          <h2 className="text-xl mt-2">Awareness is Light, Unawareness is Darkness!</h2>
+          <h1 className="text-3xl font-bold">
+            Distorted Image: Reveal the Hidden Clue
+          </h1>
+          <h2 className="text-xl mt-2">
+            Awareness is Light, Unawareness is Darkness!
+          </h2>
         </header>
         <h3 className="text-2xl font-semibold mb-6">Puzzle #5</h3>
         <section className="bg-white p-6 rounded-lg shadow-md mb-6 flex justify-center items-center">
@@ -92,7 +96,11 @@ const DistortedImagePage = () => {
       </div>
     );
   } else {
-    return <p className="text-center text-lg">You have not completed the previous question</p>;
+    return (
+      <p className="text-center text-lg">
+        You have not completed the previous question
+      </p>
+    );
   }
 };
 

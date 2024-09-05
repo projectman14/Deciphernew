@@ -32,7 +32,7 @@ const BinaryIPAddressPage = () => {
 
         setLastTaskState(lastTask);
         localStorage.setItem("lastTask", lastTask);
-        navigate("/caesar-cipher");
+        navigate("/vN7sJpR6aKqfX9kL3uHcWyQ");
       } catch (error) {
         setFeedback(
           "There was an error processing your request. Please try again later."

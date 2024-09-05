@@ -9,10 +9,10 @@ const LocationHuntPage = () => {
   const [feedback, setFeedback] = useState("");
   const [lastTaskState, setLastTaskState] = useState(
     parseInt(localStorage.getItem("lastTask") || "0", 10)
-  ); 
+  );
   const navigate = useNavigate();
 
-  const correctLocation = "Tokyo Tower"; 
+  const correctLocation = "Tokyo Tower";
 
   const checkLocation = async () => {
     if (selectedLocation === correctLocation) {
@@ -28,13 +28,13 @@ const LocationHuntPage = () => {
             team: localStorage.getItem("teamName"),
           }
         );
-        
+
         const { currentTask, lastTask } = response.data;
 
         setLastTaskState(lastTask);
         localStorage.setItem("lastTask", lastTask);
 
-        navigate("/binary-ip-address");
+        navigate("/vN7sJpR6aKqB");
       } catch (error) {
         setFeedback(
           "There was an error submitting the task. Please try again later."
@@ -51,8 +51,12 @@ const LocationHuntPage = () => {
     return (
       <div className="max-w-4xl mx-auto p-6 bg-teal-50 text-center">
         <header className="bg-teal-700 text-white p-6 rounded-lg mb-6">
-          <h1 className="text-3xl font-bold">Location Hunt: Follow the Trail</h1>
-          <h2 className="text-xl mt-2">Can you trace Satoshi's elusive path?</h2>
+          <h1 className="text-3xl font-bold">
+            Location Hunt: Follow the Trail
+          </h1>
+          <h2 className="text-xl mt-2">
+            Can you trace Satoshi's elusive path?
+          </h2>
         </header>
 
         <div className="bg-white p-6 rounded-lg mb-6 shadow-md">
@@ -61,7 +65,7 @@ const LocationHuntPage = () => {
           </div>
           <p className="text-lg mt-4">
             Known for anonymity & intractability, yet left a trail of cues
-            behind. Find his history there, to make your history here.
+            behind. <br /> Find his history there, to make your history here.
           </p>
           <a
             className="text-blue-500 hover:underline mt-2 inline-block"
@@ -75,16 +79,14 @@ const LocationHuntPage = () => {
 
         <section className="bg-white p-6 rounded-lg shadow-md">
           <h3 className="text-2xl font-bold mb-4">Puzzle #2</h3>
-          <p className="text-xl font-semibold text-teal-700 mb-4">
-            "TO FIND: <span className="font-light">A Place.</span> <br />
-            Hint: Relates Mr. Nakamoto to the world. A peaceful, yet bombastic place.."
+          <p className="text-xl font-light text-teal-700 mb-4">
+            "TO FIND: <span className="font-bold">A Place.</span> <br />
+            <b>Hint:</b> Relates Mr. Nakamoto to the world. A peaceful, yet
+            bombastic place.."
           </p>
 
           <div className="mt-6">
-            <label
-              htmlFor="location"
-              className="text-lg font-semibold mr-4"
-            >
+            <label htmlFor="location" className="text-lg font-semibold mr-4">
               Choose the Location:
             </label>
             <select

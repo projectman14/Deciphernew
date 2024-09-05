@@ -30,7 +30,7 @@ const CVQuestions = () => {
         const { currentTask, lastTask } = response.data;
         setLastTaskState(lastTask);
         localStorage.setItem("lastTask", lastTask);
-        navigate("/brain-fuck");
+        navigate("/cF8kP2nWjRzM");
       } catch (error) {
         setFeedback(
           "There was an error processing your request. Please try again later."
@@ -93,9 +93,9 @@ const CVQuestions = () => {
           {feedback && <p className="text-lg text-red-600 mt-4">{feedback}</p>}
         </section>
 
-        <div className="bg-pink-700 text-white p-4 rounded-lg mt-36">
-          <Footer></Footer>
-        </div>
+        {/* <div className="bg-pink-700 text-white p-4 rounded-lg mt-36"> */}
+        <Footer />
+        {/* </div> */}
       </div>
     );
   } else {

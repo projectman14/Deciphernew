@@ -35,7 +35,7 @@ const MorseCodeVideoPage = () => {
         localStorage.setItem("lastTask", lastTask);
 
         // Navigate to the next page after successfully submitting the task
-        navigate("/cv-question");
+        navigate("/hL5qR9oTtZxY");
       } catch (error) {
         setFeedback(
           "There was an error submitting the task. Please try again later."
@@ -53,7 +53,9 @@ const MorseCodeVideoPage = () => {
     return (
       <div className="max-w-2xl mx-auto p-6 bg-gray-100 text-center">
         <header className="bg-gray-800 text-white p-6 rounded-lg mb-6">
-          <h1 className="text-3xl font-bold">Morse Code Video: Hidden in Plain Sight</h1>
+          <h1 className="text-3xl font-bold">
+            Morse Code Video: Hidden in Plain Sight
+          </h1>
           <h2 className="text-xl mt-2">Can you decode the message?</h2>
         </header>
 
@@ -123,7 +125,11 @@ const MorseCodeVideoPage = () => {
       </div>
     );
   } else {
-    return <p className="text-center text-lg">You have not completed the previous question.</p>;
+    return (
+      <p className="text-center text-lg">
+        You have not completed the previous question.
+      </p>
+    );
   }
 };
 

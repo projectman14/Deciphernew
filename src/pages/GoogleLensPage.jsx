@@ -32,7 +32,7 @@ const GoogleLensPage = () => {
         const { currentTask, lastTask } = response.data;
         setLastTaskState(lastTask);
         localStorage.setItem("lastTask", lastTask);
-        navigate("/google-street-view");
+        navigate("/wM6oK8tJrBfV");
       } catch (error) {
         setFeedback(
           "There was an error processing your request. Please try again later."
@@ -106,7 +106,11 @@ const GoogleLensPage = () => {
       </div>
     );
   } else {
-    return <p className="text-center text-lg">You have not completed the previous question</p>;
+    return (
+      <p className="text-center text-lg">
+        You have not completed the previous question
+      </p>
+    );
   }
 };
 

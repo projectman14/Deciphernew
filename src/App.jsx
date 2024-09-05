@@ -46,14 +46,16 @@ function App() {
       // Cancel the event
       e.preventDefault();
       if (e) {
-        e.returnValue = ''; // Legacy method for cross browser support
+        e.returnValue = ""; // Legacy method for cross browser support
       }
-      return ''; // Legacy method for cross browser support
+      return ""; // Legacy method for cross browser support
     };
-        
+
     // Unmount the window.onbeforeunload event
-    return () => { window.onbeforeunload = null };
-}, []);
+    return () => {
+      window.onbeforeunload = null;
+    };
+  }, []);
 
   return (
     <>
@@ -61,28 +63,25 @@ function App() {
       <BrowserRouter>
         <DisableBackNavigation />
         <Routes>
-          <Route path="/decipher-page" element={<DecipherPage />} />
-          <Route path="/location-hunt" element={<LocationHuntPage />} />
+          <Route path="/hG8pR4nKxZcJ" element={<DecipherPage />} />
+          <Route path="/mL2wX1oTtQdE" element={<LocationHuntPage />} />
           {/* <Route path="/llm-chatbot" element={<LLMChatbotPage />} /> */}
-          <Route path="/binary-ip-address" element={<BinaryIPAddressPage />} />
-          <Route path="/caesar-cipher" element={<CaesarCipherPage />} />
-          <Route path="/distorted-image" element={<DistortedImagePage />} />
-          <Route path="/google-lens" element={<GoogleLensPage />} />
+          <Route path="/vN7sJpR6aKqB" element={<BinaryIPAddressPage />} />
           <Route
-            path="/google-street-view"
-            element={<GoogleStreetViewPage />}
+            path="/vN7sJpR6aKqfX9kL3uHcWyQ"
+            element={<CaesarCipherPage />}
           />
-          <Route
-            path="/dancing-with-flags"
-            element={<DancingWithFlagsPage />}
-          />{" "}
-          <Route path="/morse-code-video" element={<MorseCodeVideoPage />} />
-          <Route path="/brain-fuck" element={<Brainfuck />} />
+          <Route path="/zT5vB8rDgWmN" element={<DistortedImagePage />} />
+          <Route path="/qR2jF4yLpNzX" element={<GoogleLensPage />} />
+          <Route path="/wM6oK8tJrBfV" element={<GoogleStreetViewPage />} />
+          <Route path="/dS3pL9xCzQyG" element={<DancingWithFlagsPage />} />{" "}
+          <Route path="/vX7rT1wLqJbN" element={<MorseCodeVideoPage />} />
+          <Route path="/hL5qR9oTtZxY" element={<CVQuestions />} />
+          <Route path="/cF8kP2nWjRzM" element={<Brainfuck />} />
           {/* <Route path="/optional-question" element={<OptionalQuestion />} /> */}
-          <Route path="/final-answer" element={<FinalAnswerPage />} />
+          <Route path="/gJ2vX6pR3BfM" element={<FinalAnswerPage />} />
           <Route path="/rules" element={<RulesPage />} />
           <Route path="/team/leaderboard" element={<LeaderboardPage />} />
-          <Route path="/cv-question" element={<CVQuestions />} />
           <Route path="/" element={<RegisterTeamPage />} />
         </Routes>
       </BrowserRouter>

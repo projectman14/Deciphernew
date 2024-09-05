@@ -32,7 +32,7 @@ const GoogleStreetViewPage = () => {
         const { currentTask, lastTask } = response.data;
         setLastTaskState(lastTask);
         localStorage.setItem("lastTask", lastTask);
-        navigate("/dancing-with-flags"); // Replace '/next-page' with the actual path to your next page
+        navigate("/dS3pL9xCzQyG"); // Replace '/next-page' with the actual path to your next page
       } catch (error) {
         setFeedback(
           "There was an error processing your request. Please try again later."
@@ -65,14 +65,17 @@ const GoogleStreetViewPage = () => {
         </section>
 
         <section className="bg-white p-6 rounded-lg shadow-md mb-6">
-          <h3 className="text-2xl font-semibold mb-4">Coordinates:</h3>
+          {/* <h3 className="text-2xl font-semibold mb-4">Coordinates:</h3> */}
           <p className="text-3xl font-bold text-teal-700">4MMH+J9LA</p>
           {/* Replace with actual coordinates */}
         </section>
 
         <section className="bg-white p-6 rounded-lg shadow-md">
           <div className="mt-6">
-            <label htmlFor="streetviewInput" className="text-lg font-semibold mr-4">
+            <label
+              htmlFor="streetviewInput"
+              className="text-lg font-semibold mr-4"
+            >
               Enter the Hidden Message:
             </label>
             <input

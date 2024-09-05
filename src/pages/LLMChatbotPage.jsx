@@ -88,7 +88,7 @@ const LLMChatbotPage = () => {
 
   const handleNextClick = () => {
     // Navigate to the next page
-    navigate("/binary-ip-address"); // Replace '/binary-ip-address' with the actual path to your next page
+    navigate("/vN7sJpR6aKqB"); // Replace '/binary-ip-address' with the actual path to your next page
   };
 
   // Render content based on the current task state

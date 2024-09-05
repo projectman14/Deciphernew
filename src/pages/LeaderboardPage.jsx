@@ -21,14 +21,16 @@ const LeaderboardPage = () => {
   }, []);
 
   return (
-    <div className="max-w-3xl mx-auto my-12 p-6 bg-white rounded-lg shadow-lg text-center">
-      <h1 className="text-3xl font-semibold text-gray-800 mb-6">Leaderboard</h1>
-      <table className="w-full border-collapse mt-6">
+    <div className="max-w-4xl mx-auto my-12 p-8 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 rounded-lg shadow-xl text-center">
+      <h1 className="text-4xl font-extrabold text-white mb-10 tracking-wider">
+        Leaderboard
+      </h1>
+      <table className="w-full border-collapse text-lg text-white">
         <thead>
-          <tr className="bg-blue-600 text-white uppercase text-sm leading-normal">
-            <th className="py-3 px-4 border-b border-gray-200">Rank</th>
-            <th className="py-3 px-4 border-b border-gray-200">Team Name</th>
-            <th className="py-3 px-4 border-b border-gray-200">Score</th>
+          <tr className="bg-blue-700 text-white uppercase text-sm tracking-wider">
+            <th className="py-3 px-4 border-b border-gray-300">Rank</th>
+            <th className="py-3 px-4 border-b border-gray-300">Team Name</th>
+            <th className="py-3 px-4 border-b border-gray-300">Score</th>
           </tr>
         </thead>
         <tbody>
@@ -36,19 +38,22 @@ const LeaderboardPage = () => {
             <tr
               key={index}
               className={`${
-                index % 2 === 0 ? "bg-gray-100" : "bg-gray-50"
-              } hover:bg-gray-200 cursor-pointer`}
+                index < 5
+                  ? "bg-yellow-200 text-black font-bold"
+                  : index % 2 === 0
+                  ? "bg-gray-200 text-gray-800"
+                  : "bg-gray-100 text-gray-800"
+              } hover:bg-gray-300 transition-all duration-300 cursor-pointer`}
             >
-              <td className="py-3 px-4 border-b border-gray-200">
+              <td className="py-3 px-4 border-b border-gray-400">
                 {index + 1}
               </td>
-              <td className="py-3 px-4 border-b border-gray-200">
+              <td className="py-3 px-4 border-b border-gray-400">
                 {team.team}
               </td>
-              <td className="py-3 px-4 border-b border-gray-200">
+              <td className="py-3 px-4 border-b border-gray-400">
                 {team.currentTask}
-              </td>{" "}
-              {/* Display score as currentTask */}
+              </td>
             </tr>
           ))}
         </tbody>

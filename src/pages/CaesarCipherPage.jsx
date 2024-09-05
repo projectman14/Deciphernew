@@ -31,7 +31,7 @@ const CaesarCipherPage = () => {
         const { currentTask, lastTask } = response.data;
         setLastTaskState(lastTask);
         localStorage.setItem("lastTask", lastTask);
-        navigate("/distorted-image");
+        navigate("/zT5vB8rDgWmN");
       } catch (error) {
         setFeedback(
           "There was an error processing your request. Please try again later."
@@ -68,10 +68,7 @@ const CaesarCipherPage = () => {
             गूगल आंकड़े दे सकता है, ज्ञान नहीं; but Google FTW!
           </p>
           <div className="mt-6">
-            <label
-              htmlFor="cipherInput"
-              className="text-lg font-semibold mr-4"
-            >
+            <label htmlFor="cipherInput" className="text-lg font-semibold mr-4">
               Enter the name:
             </label>
             <input

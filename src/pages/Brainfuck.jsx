@@ -49,7 +49,7 @@ const Brainfuck = () => {
         const { currentTask, lastTask } = response.data;
         setLastTaskState(lastTask);
         localStorage.setItem("lastTask", lastTask);
-        navigate("/final-answer");
+        navigate("/gJ2vX6pR3BfM");
         setUserInput(""); // Clear the input field
       } catch (error) {
         setFeedback(
@@ -150,9 +150,9 @@ const Brainfuck = () => {
           )}
         </section>
 
-        <div className="caesar-footer bg-[#a1306e] text-white p-4 rounded-lg mt-6">
-          <Footer></Footer>
-        </div>
+        {/* <div className="caesar-footer bg-[#a1306e] text-white p-4 rounded-lg mt-6"> */}
+        <Footer />
+        {/* </div> */}
       </div>
     );
   } else {

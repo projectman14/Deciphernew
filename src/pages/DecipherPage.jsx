@@ -14,10 +14,16 @@ export const DecipherPage = () => {
   ); // Initialize from local storage or default to 0
   const navigate = useNavigate(); // Hook to handle navigation
 
-  const correctAnswer = import.meta.env.VITE_CORRECT_ANSWER_DECIPHER;
+  const correctAnswer = [
+    import.meta.env.VITE_CORRECT_ANSWER_DECIPHER,
+    "whitepapers",
+  ];
 
   const checkCode = async () => {
-    if (userInput.toLowerCase() === correctAnswer.toLowerCase()) {
+    if (
+      userInput.toLowerCase() === correctAnswer[0].toLowerCase() ||
+      userInput.toLowerCase() === correctAnswer[1].toLowerCase()
+    ) {
       setFeedback("Correct! You've unlocked the next clue.");
 
       try {
@@ -35,7 +41,7 @@ export const DecipherPage = () => {
         setLastTaskState(lastTask);
         localStorage.setItem("lastTask", lastTask);
 
-        navigate("/location-hunt");
+        navigate("/mL2wX1oTtQdE");
       } catch (error) {
         if (
           error.response &&

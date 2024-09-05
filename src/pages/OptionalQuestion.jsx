@@ -37,7 +37,7 @@ const OptionalQuestion = () => {
         // Update the state and local storage with the new last task
         setLastTaskState(lastTask);
         localStorage.setItem("lastTask", lastTask);
-        navigate("/final-answer"); // Replace '/final-answer' with the actual path to your next page
+        navigate("/gJ2vX6pR3BfM"); // Replace '/final-answer' with the actual path to your next page
       } catch (error) {
         setFeedback(
           "There was an error submitting the task. Please try again later."

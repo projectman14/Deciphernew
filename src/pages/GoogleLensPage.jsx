@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Footer from "./Footer";
 
-const GoogleStreetViewPage = () => {
+const GoogleLensPage = () => {
   const [userInput, setUserInput] = useState("");
   const [feedback, setFeedback] = useState("");
   const [lastTaskState, setLastTaskState] = useState(
@@ -11,13 +11,14 @@ const GoogleStreetViewPage = () => {
   );
   const navigate = useNavigate();
 
-  const correctAnswer = "hollywood";
+  const correctAnswer = ["Moraine", "Moraine Lake"];
 
   const checkAnswer = async () => {
-    if (userInput.trim().toLowerCase() === correctAnswer.toLowerCase()) {
-      setFeedback(
-        "Correct! You've found the hidden message on Google Street View. The next clue is unlocked."
-      );
+    if (
+      userInput.trim().toLowerCase() === correctAnswer[0].toLowerCase() ||
+      userInput.trim().toLowerCase() === correctAnswer[1].toLowerCase()
+    ) {
+      setFeedback("Correct!");
 
       try {
         const response = await axios.post(
@@ -31,7 +32,7 @@ const GoogleStreetViewPage = () => {
         const { currentTask, lastTask } = response.data;
         setLastTaskState(lastTask);
         localStorage.setItem("lastTask", lastTask);
-        navigate("/dancing-with-flags");
+        navigate("/google-street-view");
       } catch (error) {
         setFeedback(
           "There was an error processing your request. Please try again later."
@@ -45,38 +46,41 @@ const GoogleStreetViewPage = () => {
 
   if (lastTaskState >= 5) {
     return (
-      <div className="max-w-2xl mx-auto p-6 bg-teal-100 text-center">
+      <div className="max-w-2xl mx-auto p-6 bg-cyan-100 text-center">
         <header className="bg-teal-700 text-white p-6 rounded-lg mb-6">
-          <h1 className="text-3xl font-bold">Geo Guesser!!</h1>
+          <h1 className="text-3xl font-bold">Google Lens: Uncover the Clue</h1>
           <h2 className="text-xl mt-2">
-            Follow the coordinates, wander around the earth!
+            Use Google Lens to analyze the image and find the hidden message!
           </h2>
         </header>
 
         <section className="bg-white p-6 rounded-lg shadow-md mb-6">
-          <h3 className="text-2xl font-semibold mb-4">Puzzle #7</h3>
+          <h3 className="text-2xl font-semibold mb-4">Puzzle #6</h3>
           <p className="text-lg text-gray-700">
-            Where neon dreams and glimmers play, find the sign that lights the
-            way. <br /> In the shadow of fame’s bright glare, the truth awaits
-            if you dare to stare.
+            The final piece of the puzzle lies hidden in an image. Use Google
+            Lens to uncover the hidden message. This step symbolizes the need
+            for modern tools and techniques to fully understand Satoshi’s
+            legacy.
           </p>
         </section>
 
-        <section className="bg-white p-6 rounded-lg shadow-md mb-6">
-          <h3 className="text-2xl font-semibold mb-4">Coordinates:</h3>
-          <p className="text-3xl font-bold text-teal-700">4MMH+J9LA</p>
-          {/* Replace with actual coordinates */}
+        <section className="bg-white p-6 rounded-lg shadow-md mb-6 flex justify-center items-center">
+          <img
+            src="../../moraine.jpeg"
+            alt="Hidden Clue"
+            className="w-full max-w-lg rounded-lg shadow-lg"
+          />
         </section>
 
         <section className="bg-white p-6 rounded-lg shadow-md">
           <div className="mt-6">
-            <label htmlFor="streetviewInput" className="text-lg font-semibold mr-4">
+            <label htmlFor="lensInput" className="text-lg font-semibold mr-4">
               Enter the Hidden Message:
             </label>
             <input
               type="text"
-              id="streetviewInput"
-              name="streetviewInput"
+              id="lensInput"
+              name="lensInput"
               placeholder="Enter the hidden message"
               value={userInput}
               onChange={(e) => setUserInput(e.target.value)}
@@ -106,4 +110,4 @@ const GoogleStreetViewPage = () => {
   }
 };
 
-export default GoogleStreetViewPage;
+export default GoogleLensPage;

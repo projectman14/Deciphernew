@@ -90,6 +90,7 @@ const FinalAnswerPage = () => {
           here:
         </p>
         <a
+          target="_blank"
           href="https://drive.google.com/file/d/12eAz0ru4rSH-sQ4TB825goD6QZR_8_vf/view?usp=drive_link"
           className="text-blue-500 underline"
         >

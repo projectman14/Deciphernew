@@ -1,0 +1,55 @@
+/* Basic styling for the Register Team Page */
+
+.register-team-container {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.register-team-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.register-team-form {
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:disabled {
+  background-color: #6c757d;
+}
+
+.feedback-message {
+  margin-top: 10px;
+  color: red;
+}
+
+.register-team-footer {
+  text-align: center;
+  margin-top: 420px;
+}

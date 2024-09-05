@@ -1,0 +1,102 @@
+/* General Page Styling */
+.distorted-container {
+  font-family: "Arial", sans-serif;
+  padding: 20px;
+  background-color: #e0f7fa;
+  text-align: center;
+  max-width: 800px;
+  margin: auto;
+}
+
+.distorted-header {
+  background-color: #00796b;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.distorted-intro,
+.distorted-image,
+.distorted-puzzle {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.distorted-intro p {
+  font-size: 16px;
+  color: #333;
+}
+
+.distorted-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.distorted-puzzle-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.input-section {
+  margin-top: 20px;
+}
+
+.input-section label {
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.input-section input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+}
+
+.input-section button {
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  background-color: #00796b;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.input-section button:hover {
+  background-color: #004d40;
+}
+
+.feedback-message {
+  font-size: 16px;
+  color: #d32f2f;
+  margin-top: 15px;
+}
+
+.distorted-footer {
+  background-color: #00796b;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.distorted-footer a {
+  color: #ffeb3b;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.distorted-footer a:hover {
+  text-decoration: underline;
+}

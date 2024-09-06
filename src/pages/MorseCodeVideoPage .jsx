@@ -79,7 +79,7 @@ const MorseCodeVideoPage = () => {
 
         <section className="bg-white p-6 rounded-lg shadow-md mb-6">
           <iframe
-            className="w-full max-w-lg rounded-lg shadow-md"
+            className="w-full  rounded-lg shadow-md"
             src="https://www.youtube.com/embed/WTx_L2r4JlA?si=VmMAAaomQ-2N1i6r"
             title="YouTube video player"
             frameBorder="0"

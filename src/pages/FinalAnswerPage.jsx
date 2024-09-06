@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect ,useRef} from "react";
 import axios from "axios"; // Import axios for making HTTP requests
 import Footer from "./Footer";
+
+import { ConfettiButton } from "./WinnerAnimation";
+import confetti from "canvas-confetti";
 
 const FinalAnswerPage = () => {
   const [userInput, setUserInput] = useState(""); // State to manage user input
@@ -9,6 +12,8 @@ const FinalAnswerPage = () => {
   const [lastTaskState, setLastTaskState] = useState(
     parseInt(localStorage.getItem("lastTask") || "0", 10)
   ); // Initialize from local storage or default to 0
+
+  const confettiRef = useRef(null);
 
   // Correct answer for final answer page
   const correctAnswer = "BitcoinFinalKey"; // Replace with the actual hidden message
@@ -27,6 +32,37 @@ const FinalAnswerPage = () => {
       setFeedback(
         "Congratulations! You've discovered the final answer hidden in plain sight. You've completed the Decipher event!"
       );
+
+      const handleClick = () => {
+        const duration = 5 * 1000;
+        const animationEnd = Date.now() + duration;
+        const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+     
+        const randomInRange = (min, max) =>
+          Math.random() * (max - min) + min;
+     
+        const interval = window.setInterval(() => {
+          const timeLeft = animationEnd - Date.now();
+     
+          if (timeLeft <= 0) {
+            return clearInterval(interval);
+          }
+     
+          const particleCount = 50 * (timeLeft / duration);
+          confetti({
+            ...defaults,
+            particleCount,
+            origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+          });
+          confetti({
+            ...defaults,
+            particleCount,
+            origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+          });
+        }, 250);
+      };
+
+      handleClick();
 
       try {
         // Make the API request to submit the final task
@@ -119,7 +155,7 @@ const FinalAnswerPage = () => {
             type="button"
             onClick={checkAnswer}
             disabled={isLoading}
-            className="px-4 py-2 bg-teal-900 text-white rounded-md hover:bg-teal-800 transition"
+            className="px-4 py-2 bg-teal-900 text-white rounded-md hover:bg-teal-800 transition ml-2"
           >
             {isLoading ? "Submitting..." : "Submit"}
           </button>

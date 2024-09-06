@@ -49,11 +49,9 @@ const BinaryIPAddressPage = () => {
       <div className="max-w-4xl mx-auto p-6 bg-gray-100 text-center">
         <header className="bg-indigo-800 text-white p-6 rounded-lg mb-6">
           <h1 className="text-3xl font-bold">
-            Binary IP Address: Decipher the Digital Clue
+            The Language of Two: Decipher the Digital Clue
           </h1>
-          <h2 className="text-xl mt-2">
-            Can you decode the binary IP address?
-          </h2>
+          <h2 className="text-xl mt-2">ON & OFF</h2>
         </header>
 
         <section className="bg-white p-6 rounded-lg mb-6 shadow-md">

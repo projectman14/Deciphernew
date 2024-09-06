@@ -83,7 +83,7 @@ const BinaryIPAddressPage = () => {
             >
               Enter the Decoded IP:
             </label>
-            <div className="flex flex-col md:flex-row items-center">
+            <div className="flex flex-col md:flex-row items-center justify-center">
               <input
                 type="text"
                 id="ipInput"

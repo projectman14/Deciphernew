@@ -18,15 +18,20 @@ const Brainfuck = () => {
     localStorage.getItem("allternateQuestion") || false
   );
 
-  const [correctAnswer, setcorrectAnswer] = useState("pointer");
+  const [correctAnswer, setcorrectAnswer] = useState(["pointer"]);
 
   useEffect(() => {
     // Save allternateQuestion state to localStorage whenever it changes
     localStorage.setItem("allternateQuestion", allternateQuestion);
     if (allternateQuestion) {
-      setcorrectAnswer("man in the middle");
+      setcorrectAnswer([
+        "man in the middle",
+        "man-in-the-middle",
+        "maninthemiddle",
+        "man_in_the_middle",
+      ]);
     } else {
-      setcorrectAnswer("pointer");
+      setcorrectAnswer(["pointer"]);
     }
   }, [allternateQuestion]);
 
@@ -35,7 +40,12 @@ const Brainfuck = () => {
   };
 
   const checkAnswer = async () => {
-    if (userInput.trim().toLowerCase() === correctAnswer.toLowerCase()) {
+    if (
+      userInput.trim().toLowerCase() === correctAnswer[0]?.toLowerCase() ||
+      userInput.trim().toLowerCase() === correctAnswer[1]?.toLowerCase() ||
+      userInput.trim().toLowerCase() === correctAnswer[2]?.toLowerCase() ||
+      userInput.trim().toLowerCase() === correctAnswer[3]?.toLowerCase()
+    ) {
       setFeedback("Correct! You've decoded the Brainfuck cipher.");
       try {
         const response = await axios.post(
@@ -49,7 +59,7 @@ const Brainfuck = () => {
         const { currentTask, lastTask } = response.data;
         setLastTaskState(lastTask);
         localStorage.setItem("lastTask", lastTask);
-        navigate("/boKachoDa");
+        navigate("/gJ2vX6pR3BfM");
         setUserInput(""); // Clear the input field
       } catch (error) {
         setFeedback(
@@ -70,7 +80,7 @@ const Brainfuck = () => {
       <div className="caesar-container max-w-4xl mx-auto my-12 p-6 bg-yellow-50 text-center rounded-lg shadow-lg">
         <header className="caesar-header bg-[#a1306e] text-white p-6 rounded-lg mb-6">
           <h1 className="text-3xl font-bold">
-            Brain F*ck: Uncover the Hidden Message
+            Brain Fuck: Uncover the Hidden Message
           </h1>
           <h2 className="text-xl mt-2">
             Decode the cipher to move to next level
@@ -78,7 +88,7 @@ const Brainfuck = () => {
         </header>
 
         <section className="caesar-intro bg-white p-6 rounded-lg mb-6 shadow-sm">
-          <h3 className="text-xl font-semibold mb-4">Puzzle #12</h3>
+          <h3 className="text-xl font-semibold mb-4">Puzzle #11</h3>
           {!allternateQuestion ? (
             <div>
               <p className="text-base text-gray-800">

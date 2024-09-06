@@ -1,13 +1,4 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-
 const RulesPage = () => {
-  // const navigate = useNavigate();
-
-  // const handleGoHome = () => {
-  //   navigate("/"); // Navigate to the home page
-  // };
-
   return (
     <div className="max-w-3xl mx-auto p-6">
       <header className="text-center mb-6">
@@ -65,15 +56,6 @@ const RulesPage = () => {
           </li>
         </ol>
       </section>
-
-      {/* <section className="text-center">
-        <button
-          onClick={handleGoHome}
-          className="px-6 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition"
-        >
-          Back to Home
-        </button>
-      </section> */}
     </div>
   );
 };

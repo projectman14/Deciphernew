@@ -3,8 +3,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 import image from "../../public/registrationform-1.jpg";
-import { Rule } from "postcss";
-import RulesPage from "./RulesPage";
 
 const RegisterTeamPage = () => {
   const [teamName, setTeamName] = useState("");

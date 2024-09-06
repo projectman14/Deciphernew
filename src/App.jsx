@@ -11,32 +11,12 @@ import GoogleStreetViewPage from "./pages/GoogleStreetViewPage";
 import GoogleLensPage from "./pages/GoogleLensPage";
 import FinalAnswerPage from "./pages/FinalAnswerPage";
 import RulesPage from "./pages/RulesPage";
-
 import Brainfuck from "./pages/Brainfuck";
-
 import LeaderboardPage from "./pages/LeaderboardPage.jsx";
 import RegisterTeamPage from "./pages/RegisterTeamPage.jsx";
 import DisableBackNavigation from "./DisableBackNavigation.jsx";
 import CVQuestions from "./pages/CVQuestions.jsx";
 import { useEffect } from "react";
-
-// import OptionalQuestion from "./pages/OptionalQuestion";
-
-// import "./pages/BinaryIPAddressPage.css";
-// import "./pages/CaesarCipherPage.css";
-// import "./pages/CaesarCipherPage.css";
-// import "./pages/DancingWithFlagsPage.css";
-// import "./pages/DistortedImagePage.css";
-// import "./pages/FinalAnswerPage.css";
-// import "./pages/GoogleLensPage.css";
-// import "./pages/GoogleStreetViewPage.css";
-// import "./pages/LeaderboardPage.css";
-// import "./pages/LLMChatbotPage.css";
-// import "./pages/LocationHuntPage.css";
-// import "./pages/MorseCodeVideoPage.css";
-// import "./pages/CaesarCipherPage.css";
-// import "./pages/RegisterTeamPage.css";
-// import "./pages/RulesPage.css";
 
 function App() {
   useEffect(() => {

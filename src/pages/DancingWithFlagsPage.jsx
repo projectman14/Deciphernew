@@ -89,7 +89,7 @@ const DancingWithFlagsPage = () => {
             <button
               type="button"
               onClick={checkAnswer}
-              className="px-4 py-2 bg-teal-700 text-white rounded-md hover:bg-teal-800 transition"
+              className="px-4 py-2 bg-teal-700 text-white rounded-md hover:bg-teal-800 transition mt-2"
             >
               Submit
             </button>

@@ -126,7 +126,7 @@ const Brainfuck = () => {
               className="p-2 text-base border rounded-lg border-gray-300 mb-2"
             />
             <button
-              className="btn-1 bg-[#a1306e] text-white py-2 px-4 rounded-lg hover:bg-[#9b0d61]"
+              className="btn-1 bg-[#a1306e] text-white py-2 px-4 rounded-lg hover:bg-[#9b0d61] ml-2"
               type="button"
               onClick={checkAnswer}
             >

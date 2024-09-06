@@ -12,7 +12,7 @@ const Book = () => {
   );
   const navigate = useNavigate();
 
-  const correctLocation = "specialweddingchocolate";
+  const correctLocation = "specialweddingchocolates";
 
   const checkLocation = async () => {
     if (selectedLocation === correctLocation) {

@@ -12,9 +12,9 @@ const DisableBackNavigation = () => {
       event.returnValue = ""; // Some browsers display a default message
     };
 
-    const handlePopState = () => {
+    const handlePopState = async () =>  {
       // Ask for user confirmation before navigating back
-      const userConfirmed = window.confirm(
+      const userConfirmed = await window.confirm(
         "Are you sure you want to leave this page? Your progress will be lost."
       );
 

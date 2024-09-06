@@ -7,10 +7,10 @@ const DisableBackNavigation = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const handleBeforeUnload = (event) => {
-      event.preventDefault();
-      event.returnValue = ""; // Some browsers display a default message
-    };
+    // const handleBeforeUnload = (event) => {
+    //   event.preventDefault();
+    //   event.returnValue = ""; 
+    // };
 
     const handlePopState = async () =>  {
       // Ask for user confirmation before navigating back
@@ -33,11 +33,11 @@ const DisableBackNavigation = () => {
     // Push the current state to the history stack to prevent navigating back
     window.history.pushState(null, document.title, location.pathname);
     window.addEventListener("popstate", handlePopState);
-    window.addEventListener("beforeunload", handleBeforeUnload);
+    // window.addEventListener("beforeunload", handleBeforeUnload);
 
     return () => {
       window.removeEventListener("popstate", handlePopState);
-      window.removeEventListener("beforeunload", handleBeforeUnload);
+      // window.removeEventListener("beforeunload", handleBeforeUnload);
     };
   }, [navigate, location]);
 

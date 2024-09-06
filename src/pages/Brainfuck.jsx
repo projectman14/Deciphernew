@@ -41,7 +41,7 @@ const Brainfuck = () => {
         const response = await axios.post(
           `${import.meta.env.VITE_CORRECT_BACKENDURL}/api/teams/task`,
           {
-            taskNumber: 11, // Assuming the task number is 10
+            taskNumber: 12, // Assuming the task number is 10
             team: localStorage.getItem("teamName"),
           }
         );
@@ -65,7 +65,7 @@ const Brainfuck = () => {
   const brainfuckCode = `
 +[------->++<]>++.-.------.+++++.++++++.+++[->+++<]>.+++++++++++++.`;
 
-  if (lastTaskState >= 10) {
+  if (lastTaskState >= 11) {
     return (
       <div className="caesar-container max-w-4xl mx-auto my-12 p-6 bg-yellow-50 text-center rounded-lg shadow-lg">
         <header className="caesar-header bg-[#a1306e] text-white p-6 rounded-lg mb-6">

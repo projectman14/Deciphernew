@@ -22,7 +22,7 @@ const CVQuestions = () => {
         const response = await axios.post(
           `${import.meta.env.VITE_CORRECT_BACKENDURL}/api/teams/task`,
           {
-            taskNumber: 10,
+            taskNumber: 11,
             team: localStorage.getItem("teamName"),
           }
         );
@@ -42,7 +42,7 @@ const CVQuestions = () => {
     }
   };
 
-  if (lastTaskState >= 9) {
+  if (lastTaskState >= 10) {
     return (
       <div className="font-sans p-5 bg-yellow-50 text-center max-w-3xl mx-auto">
         <header className="bg-pink-700 text-white p-5 rounded-lg mb-5">

@@ -22,7 +22,7 @@ const MorseCodeVideoPage = () => {
         const response = await axios.post(
           `${import.meta.env.VITE_CORRECT_BACKENDURL}/api/teams/task`,
           {
-            taskNumber: 9, // Assuming the task number is 9
+            taskNumber: 10, // Assuming the task number is 9
             team: localStorage.getItem("teamName"), // Get the team name from local storage
           }
         );
@@ -49,7 +49,7 @@ const MorseCodeVideoPage = () => {
     }
   };
 
-  if (lastTaskState >= 8) {
+  if (lastTaskState >= 9) {
     return (
       <div className="max-w-2xl mx-auto p-6 bg-gray-100 text-center">
         <header className="bg-gray-800 text-white p-6 rounded-lg mb-6">

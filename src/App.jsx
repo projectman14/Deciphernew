@@ -17,6 +17,7 @@ import RegisterTeamPage from "./pages/RegisterTeamPage.jsx";
 import DisableBackNavigation from "./DisableBackNavigation.jsx";
 import CVQuestions from "./pages/CVQuestions.jsx";
 import { useEffect } from "react";
+import Enigma from "./pages/Enigma.jsx";
 
 function App() {
   useEffect(() => {
@@ -55,6 +56,7 @@ function App() {
           <Route path="/qR2jF4yLpNzX" element={<GoogleLensPage />} />
           <Route path="/wM6oK8tJrBfV" element={<GoogleStreetViewPage />} />
           <Route path="/dS3pL9xCzQyG" element={<DancingWithFlagsPage />} />{" "}
+          <Route path="/enigma" element={<Enigma />} />{" "}
           <Route path="/vX7rT1wLqJbN" element={<MorseCodeVideoPage />} />
           <Route path="/hL5qR9oTtZxY" element={<CVQuestions />} />
           <Route path="/cF8kP2nWjRzM" element={<Brainfuck />} />

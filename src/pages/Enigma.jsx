@@ -1,38 +1,35 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios"; // Import axios
+import axios from "axios";
 import Footer from "./Footer";
 
-const DancingWithFlagsPage = () => {
+const Enigma = () => {
   const [userInput, setUserInput] = useState("");
   const [feedback, setFeedback] = useState("");
   const [lastTaskState, setLastTaskState] = useState(
     parseInt(localStorage.getItem("lastTask") || "0", 10)
   );
+  const navigate = useNavigate();
 
-  const navigate = useNavigate(); // Hook to handle navigation
-
-  // Correct answer after decoding the flag signals
-  const correctAnswer = import.meta.env.VITE_CORRECT_ANSWER_DANCING; // Replace with your actual correct answer
+  const correctAnswer = "NUKETHEUS";
 
   const checkAnswer = async () => {
     if (userInput.trim().toLowerCase() === correctAnswer.toLowerCase()) {
-      setFeedback("Correct! You've decoded the flag signals.");
+      setFeedback("Correct!");
 
       try {
-        // Make the API request to submit the task
         const response = await axios.post(
           `${import.meta.env.VITE_CORRECT_BACKENDURL}/api/teams/task`,
           {
-            taskNumber: 8, // Assuming the task number is 8
-            team: localStorage.getItem("teamName"), // Get the team name from local storage
+            taskNumber: 9,
+            team: localStorage.getItem("teamName"),
           }
         );
 
         const { currentTask, lastTask } = response.data;
         setLastTaskState(lastTask);
         localStorage.setItem("lastTask", lastTask);
-        navigate("/enigma"); // Replace with actual path
+        navigate("/vX7rT1wLqJbN");
       } catch (error) {
         setFeedback(
           "There was an error processing your request. Please try again later."
@@ -44,44 +41,41 @@ const DancingWithFlagsPage = () => {
     }
   };
 
-  if (lastTaskState >= 7) {
+  if (lastTaskState >= 8) {
     return (
-      <div className="max-w-xl mx-auto p-6 bg-gray-50 text-center">
+      <div className="max-w-2xl mx-auto p-6 bg-cyan-100 text-center">
         <header className="bg-teal-700 text-white p-6 rounded-lg mb-6">
-          <h1 className="text-3xl font-bold">Dancing with Flags</h1>
-          <h2 className="text-xl mt-2">
-            Watch carefully and uncover the hidden message!
-          </h2>
+          <h1 className="text-3xl font-bold">Enigma</h1>
         </header>
 
         <section className="bg-white p-6 rounded-lg shadow-md mb-6">
-          <h3 className="text-2xl font-semibold mb-4">Puzzle #8</h3>
+          <h3 className="text-2xl font-semibold mb-4">Puzzle #9</h3>
           <p className="text-lg text-gray-700">
-            With colors swirling in a dance so grand, the signals speak where
-            flags command. <br /> Decode their rhythm in the signal’s flight,
-            and hidden messages will come to light.
+            Prompt: Einstein forgot how to use the enigma machine, help him
+            decrypt it. He received the message: KWOVPVBDA His model is Engima
+            M3, having reflector UKW B as reflector and with the following
+            configurations. Help him for the better good.
           </p>
         </section>
 
         <section className="bg-white p-6 rounded-lg shadow-md mb-6 flex justify-center items-center">
-          {/* Placeholder for the video. Replace src with actual video URL */}
           <img
-            src="../../genesis.jpeg"
-            alt="Video Placeholder"
-            className="max-w-full h-auto"
+            src="/enigma.jpeg"
+            alt="Enigma Image"
+            className="w-full max-w-lg rounded-lg shadow-lg"
           />
         </section>
 
         <section className="bg-white p-6 rounded-lg shadow-md">
           <div className="mt-6">
-            <label htmlFor="flagInput" className="text-lg font-semibold mr-4">
-              Enter the Decoded Message:
+            <label htmlFor="lensInput" className="text-lg font-semibold mr-4">
+              Enter the Answer:
             </label>
             <input
               type="text"
-              id="flagInput"
-              name="flagInput"
-              placeholder="Enter the decoded message"
+              id="lensInput"
+              name="lensInput"
+              placeholder="Enter the answer"
               value={userInput}
               onChange={(e) => setUserInput(e.target.value)}
               className="px-4 py-2 border border-gray-300 rounded-md mr-4"
@@ -89,7 +83,7 @@ const DancingWithFlagsPage = () => {
             <button
               type="button"
               onClick={checkAnswer}
-              className="px-4 py-2 bg-teal-700 text-white rounded-md hover:bg-teal-800 transition mt-2"
+              className="px-4 py-2 bg-teal-700 text-white rounded-md hover:bg-teal-800 transition"
             >
               Submit
             </button>
@@ -108,10 +102,10 @@ const DancingWithFlagsPage = () => {
   } else {
     return (
       <p className="text-center text-lg">
-        You have not completed the previous question.
+        You have not completed the previous question
       </p>
     );
   }
 };
 
-export default DancingWithFlagsPage;
+export default Enigma;

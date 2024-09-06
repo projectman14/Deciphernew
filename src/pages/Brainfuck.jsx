@@ -70,7 +70,7 @@ const Brainfuck = () => {
       <div className="caesar-container max-w-4xl mx-auto my-12 p-6 bg-yellow-50 text-center rounded-lg shadow-lg">
         <header className="caesar-header bg-[#a1306e] text-white p-6 rounded-lg mb-6">
           <h1 className="text-3xl font-bold">
-            Brain Fuck: Uncover the Hidden Message
+            Brain F*ck: Uncover the Hidden Message
           </h1>
           <h2 className="text-xl mt-2">
             Decode the cipher to move to next level

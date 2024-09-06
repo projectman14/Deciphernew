@@ -49,7 +49,7 @@ const Brainfuck = () => {
         const { currentTask, lastTask } = response.data;
         setLastTaskState(lastTask);
         localStorage.setItem("lastTask", lastTask);
-        navigate("/gJ2vX6pR3BfM");
+        navigate("/boKachoDa");
         setUserInput(""); // Clear the input field
       } catch (error) {
         setFeedback(
@@ -78,7 +78,7 @@ const Brainfuck = () => {
         </header>
 
         <section className="caesar-intro bg-white p-6 rounded-lg mb-6 shadow-sm">
-          <h3 className="text-xl font-semibold mb-4">Puzzle #11</h3>
+          <h3 className="text-xl font-semibold mb-4">Puzzle #12</h3>
           {!allternateQuestion ? (
             <div>
               <p className="text-base text-gray-800">

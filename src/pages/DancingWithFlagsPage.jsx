@@ -32,7 +32,7 @@ const DancingWithFlagsPage = () => {
         const { currentTask, lastTask } = response.data;
         setLastTaskState(lastTask);
         localStorage.setItem("lastTask", lastTask);
-        navigate("/enigma"); // Replace with actual path
+        navigate("/WbWjvFhfksfe"); // Replace with actual path
       } catch (error) {
         setFeedback(
           "There was an error processing your request. Please try again later."

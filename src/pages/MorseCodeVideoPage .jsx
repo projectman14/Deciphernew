@@ -60,7 +60,7 @@ const MorseCodeVideoPage = () => {
         </header>
 
         <section className="bg-white p-6 rounded-lg shadow-md mb-6">
-          <h3 className="text-2xl font-semibold mb-4">Puzzle #9</h3>
+          <h3 className="text-2xl font-semibold mb-4">Puzzle #10</h3>
           <p className="text-lg text-gray-700">
             In the silent ballet of coded light, observe the pattern within the
             night. <br /> With careful gaze and patient ear, the message hidden

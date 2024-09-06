@@ -123,7 +123,7 @@ const FinalAnswerPage = () => {
       </header>
 
       <section className="bg-white p-6 rounded-lg shadow-md mb-6">
-        <h3 className="text-2xl font-semibold mb-4">Puzzle #12</h3>
+        <h3 className="text-2xl font-semibold mb-4">Puzzle #14</h3>
         <p className="text-base text-gray-800 mb-4">
           The final revelation is that the answer was the event name all along!
           But what is the question you may ask? Maybe you'll find what you seek
